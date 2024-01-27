@@ -82,7 +82,6 @@
 [ext_resource type="Texture2D" uid="uid://dga7ad23w4667" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0029.png" id="40_mncn5"]
 [ext_resource type="Texture2D" uid="uid://b14pmk8fff2we" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0030.png" id="41_4bog0"]
 [ext_resource type="Texture2D" uid="uid://bbou1viontcpc" path="res://Art/hoptest2/hoptest2_0045.png" id="41_pjbdk"]
-[ext_resource type="AudioStream" uid="uid://bujvk1vb5jmkq" path="res://Sounds/Jump.mp3" id="83_lskic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5psfv"]
 size = Vector2(68, 32)
@@ -359,6 +358,8 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AudioStream" id="AudioStream_mil8o"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ofsnx")
 
@@ -375,4 +376,4 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("83_lskic")
+stream = SubResource("AudioStream_mil8o")
