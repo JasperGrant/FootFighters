@@ -62,7 +62,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private bool _isPlayer2 = false;
 	private string _nodePath = "";
 
-	PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
+	private PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
+	private PackedScene _laughScene = GD.Load<PackedScene>("res://scenes/laugh.tscn");
 
 	//members
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
@@ -113,12 +114,6 @@ public partial class PlayerCharacter : CharacterBody2D
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
-
-		var _Feather = FeatherScene.Instantiate();
-		AddChild(_Feather);
-		
-		_featherRef=GetNode<Feather>(_Feather.GetPath());
-		_featherRef.Hello();
 	}
 
 	public override void _Process(double delta)
@@ -127,7 +122,10 @@ public partial class PlayerCharacter : CharacterBody2D
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
 			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
+            var next_scene=_laughScene.Instantiate();
+            GetNode<Node>("/root").AddChild(next_scene);
 			GD.Print("Hello");
+			GetParent().QueueFree();
 		}
 		// Called every frame. Delta is time since the last frame.
 		// Update game logic here.
@@ -200,9 +198,33 @@ public partial class PlayerCharacter : CharacterBody2D
 			}
 		}
 
-		*/
-		if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
+        */
+
+
+		if (Input.IsActionJustPressed(_inputMappings.Special1))
 		{
+        	var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+        	var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+
+			var _Feather = FeatherScene.Instantiate();
+			AddChild(_Feather);
+		
+			_featherRef=GetNode<Feather>(_Feather.GetPath());
+			_featherRef.setVel(x_shoot*500,y_shoot*500);
+
+			if(_isPlayer2)
+			{
+				_featherRef.SetCollisionMaskValue(2,true);
+			}
+			else
+			{
+				_featherRef.SetCollisionMaskValue(3,true);
+			}
+		}
+
+
+        if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
+        {
 			if(IsAllowedToJump())
 			{
 
@@ -243,20 +265,15 @@ public partial class PlayerCharacter : CharacterBody2D
 			} 
 
 
-		}
-		else
-		{
-
-
+        }
+        else
+        {
 			if (IsOnFloor()){
 				// This handles the character slowing to a stop on the floor
 				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 				_sprite2D.Play("default");
 			}
-
-		}
-
-
+        }
 
 		Velocity=_localVelocity;
 		

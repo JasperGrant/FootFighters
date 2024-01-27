@@ -24,6 +24,7 @@ animations = [{
 }]
 
 [node name="Feather" type="RigidBody2D"]
+collision_layer = 0
 script = ExtResource("1_xqud7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
