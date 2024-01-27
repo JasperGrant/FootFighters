@@ -1,9 +1,9 @@
 extends Camera2D
 
 @export var move_speed = 0.5
-@export var zoom_speed = 0.05
-@export var min_zoom = 1.5
-@export var max_zoom = 5
+@export var zoom_speed = 0.25
+@export var min_zoom = 0.9
+@export var max_zoom = 10
 @export var margin = Vector2(400, 200)
 
 var targets = []
@@ -36,6 +36,8 @@ func _process(_delta):
 	var z
 	if r.size.x > r.size.y * screen_size.aspect():
 		z = clamp(r.size.x/screen_size.x, min_zoom, max_zoom)
+	else:
+		z = clamp(r.size.y / screen_size.y, min_zoom, max_zoom)
 		zoom = lerp(zoom, Vector2.ONE * z, zoom_speed)
 	
 		
