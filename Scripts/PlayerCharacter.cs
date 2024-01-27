@@ -20,40 +20,40 @@ public readonly struct Player1Mappings
 
     }
 
-    readonly string Jump {get; init;}
-    readonly string Left {get; init;}
-    readonly string Right {get; init;}
-    readonly string MegaJump {get; init;}
-    readonly string Special1 {get; init;}
-    readonly string Special2 {get; init;}
-
-
+    public readonly string Up {get; init;}
+    public readonly string Down {get; init;}
+    public readonly string Left {get; init;}
+    public readonly string Right {get; init;}
+    public readonly string Jump {get; init;}
+    public readonly string Special1 {get; init;}
+    public readonly string Special2 {get; init;}
+    public readonly string Special3 {get; init;}
 }
 
 public readonly struct Player2Mappings
 {
     public Player2Mappings()
     {
-        Up="P1"+"Up";
-        Down="P1"+"Down";
-        Left="P1"+"Left";
-        Right="P1"+"Right";
-        Jump="P1"+"Jump";
-        Special1="P1"+"Special1";
-        Special2="P1"+"Special2";
-        Special3="P1"+"Special3";
+        Up="P2"+"Up";
+        Down="P2"+"Down";
+        Left="P2"+"Left";
+        Right="P2"+"Right";
+        Jump="P2"+"Jump";
+        Special1="P2"+"Special1";
+        Special2="P2"+"Special2";
+        Special3="P2"+"Special3";
 
 
     }
 
-    readonly string Jump {get; init;}
-    readonly string Left {get; init;}
-    readonly string Right {get; init;}
-    readonly string MegaJump {get; init;}
-    readonly string Special1 {get; init;}
-    readonly string Special2 {get; init;}
-
-
+    public readonly string Up {get; init;}
+    public readonly string Down {get; init;}
+    public readonly string Left {get; init;}
+    public readonly string Right {get; init;}
+    public readonly string Jump {get; init;}
+    public readonly string Special1 {get; init;}
+    public readonly string Special2 {get; init;}
+    public readonly string Special3 {get; init;}
 }
 
 
@@ -74,6 +74,8 @@ public partial class PlayerCharacter : CharacterBody2D
 
     public AnimatedSprite2D _sprite2D;
     private CollisionShape2D _collisionShape2D;
+
+    private Player2Mappings _inputMappings = new();
 
 
 
@@ -119,7 +121,7 @@ public partial class PlayerCharacter : CharacterBody2D
             
         }
         // Handle mega jump
-        if (Input.IsActionJustPressed("megajump") && IsOnFloor())
+        if (Input.IsActionJustPressed(_inputMappings.Special2) && IsOnFloor())
         {
             _localVelocity.Y = JUMP_VELOCITY*2;
         }
