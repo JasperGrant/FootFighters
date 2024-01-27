@@ -187,4 +187,4 @@ texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
 autoplay = "default"
-frame_progress = 0.329399
+frame_progress = 0.337573

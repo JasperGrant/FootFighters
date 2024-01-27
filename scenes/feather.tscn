@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://s5aky3wgxpb7"]
+[gd_scene load_steps=7 format=3 uid="uid://s5aky3wgxpb7"]
 
 [ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_0q3pq"]
 [ext_resource type="Script" path="res://Scripts/Feather.cs" id="1_xqud7"]
+[ext_resource type="AudioStream" uid="uid://0d4gg46yyip8" path="res://Sounds/Pew.wav" id="3_ol4vl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
 radius = 6.0
@@ -37,5 +38,9 @@ rotation = 1.5708
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_j8poa")
 frame_progress = 0.835129
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ol4vl")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
