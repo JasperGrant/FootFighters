@@ -62,7 +62,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private bool _isPlayer2 = false;
 	private string _nodePath = "";
 
-	PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
+	private PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
+	private PackedScene _laughScene = GD.Load<PackedScene>("res://scenes/laugh.tscn");
 
 	//members
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
@@ -121,7 +122,10 @@ public partial class PlayerCharacter : CharacterBody2D
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
 			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
+            var next_scene=_laughScene.Instantiate();
+            GetNode<Node>("/root").AddChild(next_scene);
 			GD.Print("Hello");
+			GetParent().QueueFree();
 		}
 		// Called every frame. Delta is time since the last frame.
 		// Update game logic here.
