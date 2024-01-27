@@ -1,26 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://s5aky3wgxpb7"]
+[gd_scene load_steps=17 format=3 uid="uid://s5aky3wgxpb7"]
 
-[ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_0q3pq"]
 [ext_resource type="Script" path="res://Scripts/Feather.cs" id="1_xqud7"]
+[ext_resource type="Texture2D" uid="uid://b4ueubbbpxgg2" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0000.png" id="2_r4qdq"]
+[ext_resource type="Texture2D" uid="uid://di5ph23h465pg" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0001.png" id="3_alygw"]
 [ext_resource type="AudioStream" uid="uid://0d4gg46yyip8" path="res://Sounds/Pew.wav" id="3_ol4vl"]
+[ext_resource type="Texture2D" uid="uid://ck581p2rygweg" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0002.png" id="4_i2ecn"]
+[ext_resource type="Texture2D" uid="uid://oc58cpine7br" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0003.png" id="5_tnjpf"]
+[ext_resource type="Texture2D" uid="uid://l17kx6buvp32" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0004.png" id="6_cirsm"]
+[ext_resource type="Texture2D" uid="uid://cg7lnc4ec3efm" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0005.png" id="7_2hyhu"]
+[ext_resource type="Texture2D" uid="uid://bslvtltybithx" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0006.png" id="8_3xoi8"]
+[ext_resource type="Texture2D" uid="uid://bc3n21sf3gnwc" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0007 - Copy.png" id="9_h1iju"]
+[ext_resource type="Texture2D" uid="uid://cjisa3ubucndg" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0007.png" id="10_cikhg"]
+[ext_resource type="Texture2D" uid="uid://b71gd8lfhasxy" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0008.png" id="11_lyemb"]
+[ext_resource type="Texture2D" uid="uid://d1rw7acfyd77l" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0009.png" id="12_s3uqy"]
+[ext_resource type="Texture2D" uid="uid://dx5mfdhsprfqd" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0010.png" id="13_olncj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
-radius = 6.0
-height = 19.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1hwf"]
-atlas = ExtResource("1_0q3pq")
-region = Rect2(0, 0, 32, 32)
+radius = 2.5
+height = 17.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8poa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v1hwf")
+"texture": ExtResource("2_r4qdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_alygw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i2ecn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tnjpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cirsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2hyhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3xoi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h1iju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cikhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lyemb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s3uqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_olncj")
 }],
 "loop": true,
 "name": &"default",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [node name="Feather" type="RigidBody2D"]
@@ -28,17 +68,17 @@ collision_layer = 0
 script = ExtResource("1_xqud7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(2, 0)
 rotation = 1.5708
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0odfk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-rotation = 1.5708
-scale = Vector2(2, 2)
+position = Vector2(2.2375, 0.29375)
+scale = Vector2(0.0759615, 0.0784357)
 sprite_frames = SubResource("SpriteFrames_j8poa")
-frame_progress = 0.835129
+frame_progress = 0.356969
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ol4vl")
