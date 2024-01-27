@@ -133,18 +133,6 @@ public partial class PlayerCharacter : CharacterBody2D
 			_localVelocity.Y += (float)_gravity *(float) delta;
 			//_sprite2D.Play("jump");
 		}
-		// Handle jump.
-		// if (Input.IsActionJustPressed(_inputMappings.Jump) && IsOnFloor())
-		// {
-		// 	_localVelocity.Y = JUMP_VELOCITY;
-			
-		// }
-		// Handle mega jump
-		if (Input.IsActionJustPressed(_inputMappings.Special2) && IsOnFloor())
-		{
-			_localVelocity.Y = JUMP_VELOCITY*2;
-		}
-
 
         //get vector of input control direction
         var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
