@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="2_kpnsr"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
 
-[node name="root" type="Node"]
+[node name="Main Menu" type="Node"]
 script = ExtResource("1_xa05p")
 
 [node name="Background" type="TextureRect" parent="."]
