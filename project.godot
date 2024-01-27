@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="FootFighters"
-run/main_scene="res://scenes/arena_1.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://placeholder_assets/icon.svg"
+config/icon="res://icon.svg"
 
 [dotnet]
 
