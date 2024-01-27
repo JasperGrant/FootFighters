@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="2_kpnsr"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
 
-[node name="Main Menu" type="Node"]
+[node name="root" type="Node"]
 script = ExtResource("1_xa05p")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -47,18 +47,4 @@ grow_vertical = 0
 text = "Play"
 script = ExtResource("3_cukip")
 
-[node name="Logo" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -322.5
-offset_top = -52.5
-offset_right = 322.5
-offset_bottom = 52.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kpnsr")
-
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
