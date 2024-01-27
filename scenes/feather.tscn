@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://s5aky3wgxpb7"]
+[gd_scene load_steps=6 format=3 uid="uid://s5aky3wgxpb7"]
 
 [ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_0q3pq"]
+[ext_resource type="Script" path="res://Scripts/feather.cs" id="1_ctaku"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
 radius = 6.0
@@ -22,6 +23,7 @@ animations = [{
 }]
 
 [node name="Feather" type="Area2D"]
+script = ExtResource("1_ctaku")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
