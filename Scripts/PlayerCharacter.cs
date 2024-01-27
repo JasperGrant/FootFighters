@@ -119,11 +119,11 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Update game logic here.
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		//print for debugging
-		//GD.Print(@event.AsText());
-	}
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	//print for debugging
+	// 	GD.Print(@event.AsText());
+	// }
 
 
 	public override void _PhysicsProcess(double delta)
