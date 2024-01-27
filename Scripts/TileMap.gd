@@ -9,7 +9,3 @@ func _ready():
 	multi_cam.add_target(player_1)
 	multi_cam.add_target(player_2)
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
