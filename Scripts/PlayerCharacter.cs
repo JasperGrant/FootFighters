@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Godot;
 
 
@@ -51,18 +52,22 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export] 
 	private const float JUMP_VELOCITY=-400.0F;
 	[Export] 
-	private const bool PLAYER2 = false;
+	private const float HOPSTRENGTH=400.0F;
+	[Export] 
+	private bool _isPlayer2 = false;
+    private string _nodePath = "";
 
 
 	//members
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
 	private Vector2 _localVelocity = new(0,0);
+    private Vector2 _inputControlVector = new(0,0);
 
     private float _baseSpriteScale =0.2F;
     private float _baseColliderScale =1F;
 
-	private PlayerMappings _inputMappings = new(PLAYER2);
-	public AnimatedSprite2D _sprite2D;
+	private PlayerMappings _inputMappings = new();
+	private AnimatedSprite2D _sprite2D;
 	private CollisionShape2D _collisionShape2D;
 
 	public Label _player_health_label;
@@ -75,17 +80,27 @@ public partial class PlayerCharacter : CharacterBody2D
 	{
 		// Called every time the node is added to the scene.
 		// Initialization here.
-		GD.Print("Hello from C# to Godot :)");
+		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
+        _nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
-		if (PLAYER2)
+        if(_nodePath.IndexOf("Player2")!=-1)
+        {
+            _isPlayer2=true;
+        }
+
+
+        GD.Print(_nodePath);
+		if (_isPlayer2)
 		{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
 		}
 		else{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
 		}
+        _inputMappings=new PlayerMappings(_isPlayer2);
+
 	}
 
 	public override void _Process(double delta)
@@ -112,16 +127,26 @@ public partial class PlayerCharacter : CharacterBody2D
 			//_sprite2D.Play("jump");
 		}
 		// Handle jump.
-		if (Input.IsActionJustPressed(_inputMappings.Jump) && IsOnFloor())
-		{
-			_localVelocity.Y = JUMP_VELOCITY;
+		// if (Input.IsActionJustPressed(_inputMappings.Jump) && IsOnFloor())
+		// {
+		// 	_localVelocity.Y = JUMP_VELOCITY;
 			
-		}
+		// }
 		// Handle mega jump
 		if (Input.IsActionJustPressed(_inputMappings.Special2) && IsOnFloor())
 		{
 			_localVelocity.Y = JUMP_VELOCITY*2;
 		}
+
+
+        //get vector of input control direction
+        var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+        var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+        _inputControlVector.X=xdirection;
+        _inputControlVector.Y=ydirection;
+
+
+        /*
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
@@ -163,6 +188,44 @@ public partial class PlayerCharacter : CharacterBody2D
 				_sprite2D.Play("default");
 			}
 		}
+
+        */
+        if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
+        {
+			if(IsOnFloor())
+			{
+				_localVelocity.X = _inputControlVector.X * HOPSTRENGTH;
+                _localVelocity.Y = _inputControlVector.Y * HOPSTRENGTH;
+                GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
+
+				// var newScale = _sprite2D.Scale;
+				// //allows shinking the character if stick is not fully pushed
+				// newScale.X = xdirection*_baseScale;
+				// _sprite2D.Scale = newScale;
+				// _collisionShape2D.Scale=newScale;
+				//_sprite2D.FlipH = direction<0;
+				//GD.Print(Scale.X);
+				if (IsOnFloor()){
+					//_sprite2D.Play("run");
+				}
+
+			} 
+
+
+        }
+        else
+        {
+			// This handles the character slowing to a stop
+			_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
+
+			if (IsOnFloor()){
+				_sprite2D.Play("default");
+			}
+
+        }
+
+
+
 		Velocity=_localVelocity;
 		
 		//GD.Print(Velocity.ToString());
