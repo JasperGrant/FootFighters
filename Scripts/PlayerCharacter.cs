@@ -58,6 +58,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
 	private Vector2 _localVelocity = new(0,0);
 
+    private float _baseScale =0.2F;
+
 	private PlayerMappings _inputMappings = new(PLAYER2);
 	public AnimatedSprite2D _sprite2D;
 	private CollisionShape2D _collisionShape2D;
@@ -73,8 +75,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Called every time the node is added to the scene.
 		// Initialization here.
 		GD.Print("Hello from C# to Godot :)");
-		_sprite2D = GetNode<AnimatedSprite2D>("Sprite2D");
-		_collisionShape2D = GetNode<CollisionShape2D>("CollisionShape2D");
+		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
+		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
 
 		if (PLAYER2)
 		{
@@ -106,7 +108,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		if (!IsOnFloor())
 		{
 			_localVelocity.Y += (float)_gravity *(float) delta;
-			_sprite2D.Play("jump");
+			//_sprite2D.Play("jump");
 		}
 		// Handle jump.
 		if (Input.IsActionJustPressed(_inputMappings.Jump) && IsOnFloor())
@@ -131,13 +133,13 @@ public partial class PlayerCharacter : CharacterBody2D
 
 				var newScale = _sprite2D.Scale;
 				//allows shinking the character if stick is not fully pushed
-				newScale.X = direction*2;
+				newScale.X = direction*_baseScale;
 				_sprite2D.Scale = newScale;
 				_collisionShape2D.Scale=newScale;
 				//_sprite2D.FlipH = direction<0;
 				//GD.Print(Scale.X);
 				if (IsOnFloor()){
-					_sprite2D.Play("run");
+					//_sprite2D.Play("run");
 				}
 
 			} 
@@ -147,13 +149,13 @@ public partial class PlayerCharacter : CharacterBody2D
 
 				var newScale = _sprite2D.Scale;
 				//this maps the controller iputs to match the full on off of the arrow keys
-				newScale.X = (direction>0 ? 1:-1)*2;
+				newScale.X = (direction>0 ? 1:-1)*_baseScale;
 				_sprite2D.Scale = newScale;
 				_collisionShape2D.Scale=newScale;
 				//_sprite2D.FlipH = direction<0;
 				//GD.Print(Scale.X);
 				if (IsOnFloor()){
-					_sprite2D.Play("run");
+					//_sprite2D.Play("run");
 				}
 
 
