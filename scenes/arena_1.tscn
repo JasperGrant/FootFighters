@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=7 format=3 uid="uid://dlh72gx6fdxe1"]
 
 [ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
-[ext_resource type="PackedScene" uid="uid://s5aky3wgxpb7" path="res://scenes/feather.tscn" id="4_c6ge3"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="4_pmmx0"]
+[ext_resource type="PackedScene" uid="uid://s5aky3wgxpb7" path="res://scenes/feather.tscn" id="4_c6ge3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -614,9 +614,6 @@ position = Vector2(444, 403)
 [node name="Player2" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(791, 404)
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_pmmx0")
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Health_Bars" type="Panel" parent="UI"]
@@ -655,4 +652,64 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Feather" parent="." instance=ExtResource("4_c6ge3")]
-position = Vector2(726, 327)
+position = Vector2(856, 357)
+
+[node name="Feather2" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(506, 369)
+
+[node name="Feather3" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(580, 322)
+
+[node name="Feather4" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(546, 348)
+
+[node name="Feather5" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(654, 277)
+
+[node name="Feather6" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(615, 300)
+
+[node name="Feather7" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(510, 337)
+
+[node name="Feather8" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(558, 384)
+
+[node name="Feather9" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(607, 348)
+
+[node name="Feather10" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(530, 274)
+
+[node name="Feather11" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(683, 218)
+
+[node name="Feather12" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(372, 259)
+
+[node name="Feather13" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(315, 339)
+
+[node name="Feather14" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(861, 261)
+
+[node name="Feather15" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(487, 272)
+
+[node name="Feather16" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(732, 263)
+
+[node name="Feather17" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(658, 329)
+
+[node name="Feather18" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(539, 309)
+
+[node name="Feather19" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(586, 261)
+
+[node name="Feather20" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(604, 379)
+
+[node name="Feather21" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(510, 402)

@@ -1,14 +1,16 @@
 using Godot;
-using System;
-using System.Numerics;
-using System.Runtime.Intrinsics;
 
 public partial class Feather : RigidBody2D
 {
 
-
-	private Godot.Vector2 velocity = new(-300,300);
+	public int X = 5;
+	public Godot.Vector2 velocity = new(-300,300);
 	private AnimatedSprite2D sprite;
+
+	public void Hello()
+	{
+		GD.Print("Hello Bob");
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -27,6 +29,10 @@ public partial class Feather : RigidBody2D
 	}
 	public void OnCollision(Node node)
 	{
-		QueueFree();
+			if(node.GetType().ToString() == "PlayerCharacter"){
+				node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
+			}
+			QueueFree();
+
 	}
 }
