@@ -70,15 +70,15 @@ script = ExtResource("1_xqud7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
 rotation = 1.5708
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_0odfk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2.2375, 0.29375)
-scale = Vector2(0.0759615, 0.0784357)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_j8poa")
-frame_progress = 0.356969
+frame_progress = 0.771152
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ol4vl")
