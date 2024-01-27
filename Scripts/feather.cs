@@ -29,14 +29,10 @@ public partial class Feather : RigidBody2D
 	}
 	public void OnCollision(Node node)
 	{
-<<<<<<< HEAD
 			if(node.GetType().ToString() == "PlayerCharacter"){
 				node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
 			}
 			QueueFree();
 
-=======
-		//QueueFree();
->>>>>>> e6b55851d56bef78f98afdb7ddda3a7c01f7c8f0
 	}
 }
