@@ -86,6 +86,9 @@ public partial class PlayerCharacter : CharacterBody2D
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
+	private float _flatProjectileVelo = 200.0F;
+	private float _factorProjectileVelo = 500.0F; 
+
 	private Feather _featherRef;
 
 
@@ -210,7 +213,7 @@ public partial class PlayerCharacter : CharacterBody2D
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			_featherRef.setVel(x_shoot*500,y_shoot*500);
+			_featherRef.setVel(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
 
 			if(_isPlayer2)
 			{
