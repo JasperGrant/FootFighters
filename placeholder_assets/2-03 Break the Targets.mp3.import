@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwjhx0ghri6la"
+path="res://.godot/imported/2-03 Break the Targets.mp3-a0f1a2727d9042a24640444d3cd11fdf.mp3str"
+
+[deps]
+
+source_file="res://placeholder_assets/2-03 Break the Targets.mp3"
+dest_files=["res://.godot/imported/2-03 Break the Targets.mp3-a0f1a2727d9042a24640444d3cd11fdf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
