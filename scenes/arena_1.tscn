@@ -648,3 +648,66 @@ grow_vertical = 2
 text = "2/5"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Feather" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(856, 357)
+
+[node name="Feather2" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(506, 369)
+
+[node name="Feather3" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(580, 322)
+
+[node name="Feather4" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(546, 348)
+
+[node name="Feather5" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(654, 277)
+
+[node name="Feather6" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(615, 300)
+
+[node name="Feather7" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(510, 337)
+
+[node name="Feather8" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(558, 384)
+
+[node name="Feather9" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(607, 348)
+
+[node name="Feather10" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(530, 274)
+
+[node name="Feather11" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(683, 218)
+
+[node name="Feather12" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(372, 259)
+
+[node name="Feather13" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(315, 339)
+
+[node name="Feather14" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(861, 261)
+
+[node name="Feather15" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(487, 272)
+
+[node name="Feather16" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(732, 263)
+
+[node name="Feather17" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(658, 329)
+
+[node name="Feather18" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(539, 309)
+
+[node name="Feather19" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(586, 261)
+
+[node name="Feather20" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(604, 379)
+
+[node name="Feather21" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(510, 402)

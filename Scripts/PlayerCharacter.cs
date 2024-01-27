@@ -1,6 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
-using System.Xml.Resolvers;
 using Godot;
 
 
@@ -63,7 +60,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 	private bool _isPlayer2 = false;
-    private string _nodePath = "";
+	private string _nodePath = "";
 
 	PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
 
@@ -72,8 +69,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private Vector2 _localVelocity = new(0,0);
     private Vector2 _inputControlVector = new(0,0);
 
-    private float _baseSpriteScale =0.2F;
-    private float _baseColliderScale =1F;
+	private float _baseScale =0.2F;
 
 	private PlayerMappings _inputMappings = new();
 	private AnimatedSprite2D _sprite2D;
@@ -81,8 +77,11 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public Label _player_health_label;
 
-	public int _health = 5;
+	private int _health = 5;
 
+	public void decrement_health(int diff){
+		_health -= diff;
+	}
     private int _allowedJumpAmount = 2;
     private int _currentJumps = 0;
 
@@ -97,15 +96,15 @@ public partial class PlayerCharacter : CharacterBody2D
 		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
-        _nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
+		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
-        if(_nodePath.IndexOf("Player2")!=-1)
-        {
-            _isPlayer2=true;
-        }
+		if(_nodePath.IndexOf("Player2")!=-1)
+		{
+			_isPlayer2=true;
+		}
 
 
-        GD.Print(_nodePath);
+		GD.Print(_nodePath);
 		if (_isPlayer2)
 		{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
@@ -113,7 +112,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		else{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
 		}
-        _inputMappings=new PlayerMappings(_isPlayer2);
+		_inputMappings=new PlayerMappings(_isPlayer2);
 
 		var _Feather = FeatherScene.Instantiate();
 		AddChild(_Feather);
@@ -125,6 +124,11 @@ public partial class PlayerCharacter : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		_player_health_label.Text = _health.ToString();
+		if(_health < 1){
+			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
+			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
+			GD.Print("Hello");
+		}
 		// Called every frame. Delta is time since the last frame.
 		// Update game logic here.
 	}
