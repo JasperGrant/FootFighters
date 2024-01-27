@@ -24,6 +24,7 @@ animations = [{
 }]
 
 [node name="Feather" type="RigidBody2D"]
+collision_layer = 0
 script = ExtResource("1_xqud7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -31,7 +32,6 @@ position = Vector2(-4, 0)
 rotation = 1.5708
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0odfk")
-disabled = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

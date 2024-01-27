@@ -113,12 +113,6 @@ public partial class PlayerCharacter : CharacterBody2D
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
-
-		var _Feather = FeatherScene.Instantiate();
-		AddChild(_Feather);
-		
-		_featherRef=GetNode<Feather>(_Feather.GetPath());
-		_featherRef.Hello();
 	}
 
 	public override void _Process(double delta)
@@ -201,6 +195,30 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
         */
+
+
+		if (Input.IsActionJustPressed(_inputMappings.Special1))
+		{
+        	var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+        	var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+
+			var _Feather = FeatherScene.Instantiate();
+			AddChild(_Feather);
+		
+			_featherRef=GetNode<Feather>(_Feather.GetPath());
+			_featherRef.setVel(x_shoot*500,y_shoot*500);
+
+			if(_isPlayer2)
+			{
+				_featherRef.SetCollisionMaskValue(2,true);
+			}
+			else
+			{
+				_featherRef.SetCollisionMaskValue(3,true);
+			}
+		}
+
+
         if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
         {
 			if(IsAllowedToJump())
@@ -246,17 +264,12 @@ public partial class PlayerCharacter : CharacterBody2D
         }
         else
         {
-
-
 			if (IsOnFloor()){
                 // This handles the character slowing to a stop on the floor
                 _localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 				_sprite2D.Play("default");
 			}
-
         }
-
-
 
 		Velocity=_localVelocity;
 		

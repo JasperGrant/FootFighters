@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Feather : RigidBody2D
@@ -7,15 +8,18 @@ public partial class Feather : RigidBody2D
 	public Godot.Vector2 velocity = new(-300,300);
 	private AnimatedSprite2D sprite;
 
-	public void Hello()
+	string sender;
+
+	public void setVel(float X, float Y)
 	{
-		GD.Print("Hello Bob");
+		velocity = new(X,Y);
+		ApplyImpulse(velocity);
 	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ApplyImpulse(velocity);
+		//ApplyImpulse(velocity);
 		GravityScale = 0;
 		ContactMonitor = true;
 		MaxContactsReported = 1000;
@@ -29,10 +33,10 @@ public partial class Feather : RigidBody2D
 	}
 	public void OnCollision(Node node)
 	{
-			if(node.GetType().ToString() == "PlayerCharacter"){
-				node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
-			}
-			QueueFree();
-
+		if(node.GetType().ToString() == "PlayerCharacter")
+		{
+			node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
+		}
+		QueueFree();		
 	}
 }

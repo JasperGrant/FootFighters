@@ -87,9 +87,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("41_pjbdk")
 }],
-"loop": true,
+"loop": false,
 "name": &"Land",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -188,9 +188,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("32_kkk2q")
 }],
-"loop": true,
+"loop": false,
 "name": &"Spring",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -316,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("41_pjbdk")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 30.0
 }]
@@ -333,6 +333,5 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Land"
+animation = &"Spring"
 autoplay = "default"
-frame_progress = 0.937499
