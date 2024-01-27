@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://s5aky3wgxpb7"]
 
 [ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_0q3pq"]
-[ext_resource type="Script" path="res://Scripts/feather.cs" id="1_ctaku"]
+[ext_resource type="Script" path="res://Scripts/Feather.cs" id="1_xqud7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
 radius = 6.0
-height = 21.0
+height = 19.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1hwf"]
 atlas = ExtResource("1_0q3pq")
@@ -22,16 +22,20 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Feather" type="Area2D"]
-script = ExtResource("1_ctaku")
+[node name="Feather" type="RigidBody2D"]
+script = ExtResource("1_xqud7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-4, 0)
+rotation = 1.5708
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0odfk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+rotation = 1.5708
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_j8poa")
 frame_progress = 0.835129
+
+[connection signal="body_entered" from="." to="." method="OnCollision"]

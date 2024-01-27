@@ -14,8 +14,6 @@ public readonly struct Player1Mappings
         MegaJump="P1"+"MegaJump";
         Special1="P1"+"Special1";
         Special2="P1"+"Special2";
-
-
     }
 
     readonly string Jump {get; init;}
