@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://bbou1viontcpc" path="res://Art/hoptest2/hoptest2_0045.png" id="41_pjbdk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5psfv"]
-size = Vector2(72, 31)
+size = Vector2(46, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ok8ra"]
 animations = [{
@@ -190,3 +190,4 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
 autoplay = "default"
 frame_progress = 0.337573
+script = ExtResource("1_ofsnx")
