@@ -51,150 +51,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_arwpf")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("32_kkk2q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_0v1bu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_twuuu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_mrpc3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_bf404")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_ognfh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_4qm06")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_ljw6x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_07dgd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_pjbdk")
-}],
-"loop": true,
-"name": &"Land",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_arwpf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_j5bfg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_yvqib")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_8rgo2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_k5hac")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_usbfb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_jywt2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_4gu38")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_c1oe8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_sy0ub")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ptwd1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_bacom")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_n2lyc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_vvawg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_56l7l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_3xfsj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_cpybw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_gadq3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_l0s6n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_be2qg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_yh26s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_rppya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_67tv5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_5e6hl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_kn40e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_u7gwh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_12gy2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_62xiq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_ltjhg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_5x37u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_htxl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_kkk2q")
-}],
-"loop": true,
-"name": &"Spring",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_arwpf")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_j5bfg")
@@ -322,17 +178,15 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-texture_filter = 2
 script = ExtResource("1_ofsnx")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(1, 3.5)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_5psfv")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Land"
 autoplay = "default"
-frame_progress = 0.937499
+frame_progress = 0.337573
