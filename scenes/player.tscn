@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://be1sxce1ynfbr"]
+[gd_scene load_steps=45 format=3 uid="uid://be1sxce1ynfbr"]
 
 [ext_resource type="Texture2D" uid="uid://bvsjnhvvkbebm" path="res://Art/hoptest2/hoptest2_0005.png" id="1_arwpf"]
+[ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="1_ofsnx"]
 [ext_resource type="Texture2D" uid="uid://tfld1342pct3" path="res://Art/hoptest2/hoptest2_0006.png" id="2_j5bfg"]
 [ext_resource type="Texture2D" uid="uid://bqs7fbs7vpp7f" path="res://Art/hoptest2/hoptest2_0007.png" id="3_yvqib"]
 [ext_resource type="Texture2D" uid="uid://dcdb2hu85so5m" path="res://Art/hoptest2/hoptest2_0008.png" id="4_8rgo2"]
@@ -177,6 +178,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ofsnx")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
