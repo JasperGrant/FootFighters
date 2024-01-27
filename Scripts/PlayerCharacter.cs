@@ -56,7 +56,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export] 
 	private const float ONLY_X_MOTION_SCALER=0.6F;
 
-
+	bool isInAir;
 
 
 	private bool _isPlayer2 = false;
@@ -76,13 +76,11 @@ public partial class PlayerCharacter : CharacterBody2D
 	private AnimatedSprite2D _sprite2D;
 	private CollisionShape2D _collisionShape2D;
 
+	private AudioStreamPlayer _jumpsound;
+
 	public Label _player_health_label;
 
 	private int _health = 5;
-
-	public void decrement_health(int diff){
-		_health -= diff;
-	}
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
@@ -100,6 +98,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
+		_jumpsound = GetNode<AudioStreamPlayer>("JumpSound");
+
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
 		if(_nodePath.IndexOf("Player2")!=-1)
@@ -107,14 +107,12 @@ public partial class PlayerCharacter : CharacterBody2D
 			_isPlayer2=true;
 		}
 
-
-		GD.Print(_nodePath);
 		if (_isPlayer2)
 		{
-			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
+			_player_health_label = GetNode<Label>("../UI/Health_Bars/P2_Health");
 		}
 		else{
-			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
+			_player_health_label = GetNode<Label>("../UI/Health_Bars/P1_Health");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
 	}
@@ -124,10 +122,9 @@ public partial class PlayerCharacter : CharacterBody2D
 		_player_health_label.Text = _health.ToString();
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
-			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
 			var next_scene=_laughScene.Instantiate();
-			GetNode<Node>("/root").AddChild(next_scene);
-			GD.Print("Hello");
+			GetNode<Node>("/root/BaseNode").AddChild(next_scene);	
+			// GD.Print(GetNode<Node>("/root").GetTreeStringPretty());
 			GetParent().QueueFree();
 		}
 		// Called every frame. Delta is time since the last frame.
@@ -148,7 +145,6 @@ public partial class PlayerCharacter : CharacterBody2D
 		if (!IsOnFloor())
 		{
 			_localVelocity.Y += (float)_gravity *(float) delta;
-			//_sprite2D.Play("jump");
 		}
 
 		//get vector of input control direction
@@ -156,7 +152,6 @@ public partial class PlayerCharacter : CharacterBody2D
 		var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
 		_inputControlVector.X=xdirection;
 		_inputControlVector.Y=ydirection;
-
 
 		/*
 		// Get the input direction and handle the movement/deceleration.
@@ -213,7 +208,7 @@ public partial class PlayerCharacter : CharacterBody2D
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			_featherRef.setVel(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
+			_featherRef.setVelo(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
 
 			if(_isPlayer2)
 			{
@@ -230,6 +225,9 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			if(IsAllowedToJump())
 			{
+				_sprite2D.Stop();
+				_sprite2D.Play("Spring");
+				isInAir = true;
 
 				if (_inputControlVector.X==0)
 				{
@@ -274,7 +272,6 @@ public partial class PlayerCharacter : CharacterBody2D
 			if (IsOnFloor()){
 				// This handles the character slowing to a stop on the floor
 				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
-				_sprite2D.Play("default");
 			}
 		}
 
@@ -283,6 +280,12 @@ public partial class PlayerCharacter : CharacterBody2D
 		//GD.Print(Velocity.ToString());
 	
 		MoveAndSlide();
+
+		if(isInAir && (IsOnFloor() || IsOnWall()))
+		{
+			_sprite2D.Play("Land");
+			isInAir = false;
+		}
 	}
 
 
@@ -304,5 +307,87 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 	}
+
+
+
+
+	public void decrement_health(int diff){
+		_health -= diff;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
 

@@ -15,16 +15,16 @@ public partial class GameManager : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (_debugPrintCycleFlag)
-		{
-			GD.Print("GM is alive 1");
-			_debugPrintCycleFlag=false;
-		}
-		else
-		{
-			GD.Print("GM is alive 0");
-			_debugPrintCycleFlag=true;
-		}
+		// if (_debugPrintCycleFlag)
+		// {
+		// 	GD.Print("GM is alive 1");
+		// 	_debugPrintCycleFlag=false;
+		// }
+		// else
+		// {
+		// 	GD.Print("GM is alive 0");
+		// 	_debugPrintCycleFlag=true;
+		// }
 
 	}
 }

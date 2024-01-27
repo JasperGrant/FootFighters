@@ -8,13 +8,9 @@ public partial class Feather : RigidBody2D
 	public Godot.Vector2 velocity = new(-300,300);
 	private AnimatedSprite2D sprite;
 
-	string sender;
+	private string sender;
 
-	public void setVel(float X, float Y)
-	{
-		velocity = new(X,Y);
-		ApplyImpulse(velocity);
-	}
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -39,4 +35,13 @@ public partial class Feather : RigidBody2D
 		}
 		QueueFree();		
 	}
+
+	public void setVelo(float X, float Y)
+	{
+		velocity = new(X,Y);
+		ApplyImpulse(velocity);
+	}
+
+
+
 }
