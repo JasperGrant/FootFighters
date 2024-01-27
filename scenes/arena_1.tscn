@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=7 format=3 uid="uid://dlh72gx6fdxe1"]
 
 [ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="PackedScene" uid="uid://6h4fdc5ipgmb" path="res://scenes/player.tscn" id="3_vehsr"]
+[ext_resource type="PackedScene" uid="uid://s5aky3wgxpb7" path="res://scenes/feather.tscn" id="4_c6ge3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -611,3 +612,6 @@ position = Vector2(444, 403)
 
 [node name="Player2" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(791, 404)
+
+[node name="Feather" parent="." instance=ExtResource("4_c6ge3")]
+position = Vector2(456, 313)
