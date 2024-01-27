@@ -12,9 +12,32 @@ config_version=5
 
 config/name="FootFighters"
 run/main_scene="res://scenes/main_menu.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="FootFighters"
+
+[input]
+
+P1Up={
+"deadzone": 0.5,
+"events": []
+}
+P1Down={
+"deadzone": 0.5,
+"events": []
+}
+P1Left={
+"deadzone": 0.5,
+"events": []
+}
+P1Right={
+"deadzone": 0.5,
+"events": []
+}
+P1MegaJump={
+"deadzone": 0.5,
+"events": []
+}
