@@ -34,12 +34,14 @@ public readonly struct Player2Mappings
 {
     public Player2Mappings()
     {
-        Jump="P2"+"Up";
-        Left="P2"+"Left";
-        Right="P2"+"Right";
-        MegaJump="P2"+"MegaJump";
-        Special1="P2"+"Special1";
-        Special2="P2"+"Special2";
+        Up="P1"+"Up";
+        Down="P1"+"Down";
+        Left="P1"+"Left";
+        Right="P1"+"Right";
+        Jump="P1"+"Jump";
+        Special1="P1"+"Special1";
+        Special2="P1"+"Special2";
+        Special3="P1"+"Special3";
 
 
     }
