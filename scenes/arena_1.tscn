@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="4_pmmx0"]
+[ext_resource type="PackedScene" uid="uid://s5aky3wgxpb7" path="res://scenes/feather.tscn" id="4_c6ge3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -612,9 +613,6 @@ position = Vector2(444, 403)
 
 [node name="Player2" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(791, 404)
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_pmmx0")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
