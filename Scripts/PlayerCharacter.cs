@@ -81,6 +81,8 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public int _health = 5;
 
+    private int _allowedJumpAmount = 2;
+    private int _currentJumps = 0;
 
 
 	public override void _Ready()
@@ -252,9 +254,22 @@ public partial class PlayerCharacter : CharacterBody2D
 
     private bool IsAllowedToJump()
     {
+        if (IsOnFloor() || IsOnWall())
+        {
+            _currentJumps=0;
+            return true;
+        }
+        else if (_currentJumps<_allowedJumpAmount)
+        {
+            _currentJumps++;
+            return true;
+        }
+        else
+        {
+            _currentJumps=0;
+            return false;
+        }
 
-
-        return IsOnFloor();
     }
 
 
