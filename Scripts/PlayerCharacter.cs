@@ -256,7 +256,7 @@ public partial class PlayerCharacter : CharacterBody2D
     {
         if (IsOnFloor() || IsOnWall())
         {
-            _currentJumps=0;
+            _currentJumps=1;
             return true;
         }
         else if (_currentJumps<_allowedJumpAmount)
@@ -266,7 +266,6 @@ public partial class PlayerCharacter : CharacterBody2D
         }
         else
         {
-            _currentJumps=0;
             return false;
         }
 
