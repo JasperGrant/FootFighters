@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Numerics;
-using System.Runtime.Intrinsics;
 
 public partial class Feather : RigidBody2D
 {
@@ -27,6 +24,10 @@ public partial class Feather : RigidBody2D
 	}
 	public void OnCollision(Node node)
 	{
-		QueueFree();
+			if(node.GetType().ToString() == "PlayerCharacter"){
+				node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
+			}
+			QueueFree();
+
 	}
 }
