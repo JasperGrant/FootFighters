@@ -84,7 +84,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
-	private float _flatProjectileVelo = 200.0F;
+	private float _flatProjectileVelo = 500.0F;
 	private float _factorProjectileVelo = 500.0F; 
 
 	private Feather _featherRef;
@@ -274,6 +274,12 @@ public partial class PlayerCharacter : CharacterBody2D
 			if (IsOnFloor()){
 				// This handles the character slowing to a stop on the floor
 				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
+			}
+			else
+			{
+				//allow some movement in air
+
+				_localVelocity.X = _inputControlVector.X * SPEED * 0.8F;
 			}
 		}
 
