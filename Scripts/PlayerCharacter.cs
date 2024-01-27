@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Godot;
 
 
@@ -51,7 +52,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export] 
 	private const float JUMP_VELOCITY=-400.0F;
 	[Export] 
-	private const bool PLAYER2 = false;
+	private bool _isPlayer2 = false;
+    private string _nodePath = "";
 
 
 	//members
@@ -60,8 +62,8 @@ public partial class PlayerCharacter : CharacterBody2D
 
     private float _baseScale =0.2F;
 
-	private PlayerMappings _inputMappings = new(PLAYER2);
-	public AnimatedSprite2D _sprite2D;
+	private PlayerMappings _inputMappings = new();
+	private AnimatedSprite2D _sprite2D;
 	private CollisionShape2D _collisionShape2D;
 
 	public Label _player_health_label;
@@ -74,17 +76,27 @@ public partial class PlayerCharacter : CharacterBody2D
 	{
 		// Called every time the node is added to the scene.
 		// Initialization here.
-		GD.Print("Hello from C# to Godot :)");
+		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
+        _nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
-		if (PLAYER2)
+        if(_nodePath.IndexOf("Player2")!=-1)
+        {
+            _isPlayer2=true;
+        }
+
+
+        GD.Print(_nodePath);
+		if (_isPlayer2)
 		{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
 		}
 		else{
 			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
 		}
+        _inputMappings=new PlayerMappings(_isPlayer2);
+
 	}
 
 	public override void _Process(double delta)
