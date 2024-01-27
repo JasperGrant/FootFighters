@@ -52,8 +52,15 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export] 
 	private const float JUMP_VELOCITY=-400.0F;
 	[Export] 
-	private const float HOPSTRENGTH=400.0F;
+	private const float HOP_STRENGTH=600.0F;
 	[Export] 
+	private const float ONLY_Y_MOTION_SCALER=0.8F;
+	[Export] 
+	private const float ONLY_X_MOTION_SCALER=0.6F;
+
+
+
+
 	private bool _isPlayer2 = false;
     private string _nodePath = "";
 
@@ -192,10 +199,30 @@ public partial class PlayerCharacter : CharacterBody2D
         */
         if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
         {
-			if(IsOnFloor())
+			if(IsAllowedToJump())
 			{
-				_localVelocity.X = _inputControlVector.X * HOPSTRENGTH;
-                _localVelocity.Y = _inputControlVector.Y * HOPSTRENGTH;
+
+                if (_inputControlVector.X==0)
+                {
+                    _localVelocity.X=0;
+                    _localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH * ONLY_Y_MOTION_SCALER;    
+                }
+                else if (_inputControlVector.Y==0)
+                {
+                    _localVelocity.X = _inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER;
+                    _localVelocity.Y = 0; 
+                }
+                else
+                {
+				_localVelocity.X = _inputControlVector.X * HOP_STRENGTH;
+                _localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH;
+                }
+
+
+
+
+
+
                 GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
 
 				// var newScale = _sprite2D.Scale;
@@ -215,10 +242,11 @@ public partial class PlayerCharacter : CharacterBody2D
         }
         else
         {
-			// This handles the character slowing to a stop
-			_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
+
 
 			if (IsOnFloor()){
+                // This handles the character slowing to a stop on the floor
+                _localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 				_sprite2D.Play("default");
 			}
 
@@ -232,6 +260,89 @@ public partial class PlayerCharacter : CharacterBody2D
 	
 		MoveAndSlide();
 	}
+
+
+    private bool IsAllowedToJump()
+    {
+
+
+        return IsOnFloor();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
