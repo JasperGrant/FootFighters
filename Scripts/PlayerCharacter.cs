@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Xml.Resolvers;
 using Godot;
 
 
@@ -64,6 +65,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private bool _isPlayer2 = false;
     private string _nodePath = "";
 
+	PackedScene FeatherScene = GD.Load<PackedScene>("res://scenes/feather.tscn");
 
 	//members
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
@@ -84,9 +86,12 @@ public partial class PlayerCharacter : CharacterBody2D
     private int _allowedJumpAmount = 2;
     private int _currentJumps = 0;
 
+	private Feather _featherRef;
+
 
 	public override void _Ready()
 	{
+		
 		// Called every time the node is added to the scene.
 		// Initialization here.
 		
@@ -110,6 +115,11 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
         _inputMappings=new PlayerMappings(_isPlayer2);
 
+		var _Feather = FeatherScene.Instantiate();
+		AddChild(_Feather);
+		
+		_featherRef=GetNode<Feather>(_Feather.GetPath());
+		_featherRef.Hello();
 	}
 
 	public override void _Process(double delta)
