@@ -122,8 +122,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
 			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
-            var next_scene=_laughScene.Instantiate();
-            GetNode<Node>("/root").AddChild(next_scene);
+			var next_scene=_laughScene.Instantiate();
+			GetNode<Node>("/root").AddChild(next_scene);
 			GD.Print("Hello");
 			GetParent().QueueFree();
 		}
@@ -198,13 +198,13 @@ public partial class PlayerCharacter : CharacterBody2D
 			}
 		}
 
-        */
+		*/
 
 
 		if (Input.IsActionJustPressed(_inputMappings.Special1))
 		{
-        	var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-        	var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+			var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+			var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
 
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
@@ -223,8 +223,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 
-        if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
-        {
+		if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
+		{
 			if(IsAllowedToJump())
 			{
 
@@ -265,15 +265,15 @@ public partial class PlayerCharacter : CharacterBody2D
 			} 
 
 
-        }
-        else
-        {
+		}
+		else
+		{
 			if (IsOnFloor()){
 				// This handles the character slowing to a stop on the floor
 				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 				_sprite2D.Play("default");
 			}
-        }
+		}
 
 		Velocity=_localVelocity;
 		
