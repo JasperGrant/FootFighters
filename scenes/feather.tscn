@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://s5aky3wgxpb7"]
+
+[ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_0q3pq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
+radius = 6.0
+height = 21.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1hwf"]
+atlas = ExtResource("1_0q3pq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8poa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1hwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Feather" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_0odfk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_j8poa")
+frame_progress = 0.835129
