@@ -45,46 +45,59 @@ public readonly struct PlayerMappings
 
 public partial class PlayerCharacter : CharacterBody2D
 {
-    //constants
-    [Export]
-    private const float SPEED=300.0F;
-    [Export]
-    private const float JUMP_VELOCITY=-400.0F;
-      [Export]
-    private const bool PLAYER2=false;
+	//constants
+	[Export] 
+	private const float SPEED=300.0F;
+	[Export] 
+	private const float JUMP_VELOCITY=-400.0F;
+	[Export] 
+	private const bool PLAYER2 = false;
 
-    //members
-    private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
-    private Vector2 _localVelocity = new(0,0);
 
-    public AnimatedSprite2D _sprite2D;
-    private CollisionShape2D _collisionShape2D;
+	//members
+	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
+	private Vector2 _localVelocity = new(0,0);
 
     private PlayerMappings _inputMappings = new(PLAYER2);
+	public AnimatedSprite2D _sprite2D;
+	private CollisionShape2D _collisionShape2D;
+
+	public Label _player_health_label;
+
+	public int _health = 5;
 
 
 
-    public override void _Ready()
-    {
-        // Called every time the node is added to the scene.
-        // Initialization here.
-        GD.Print("Hello from C# to Godot :)");
-        _sprite2D = GetNode<AnimatedSprite2D>("Sprite2D");
-        _collisionShape2D = GetNode<CollisionShape2D>("CollisionShape2D");
+	public override void _Ready()
+	{
+		// Called every time the node is added to the scene.
+		// Initialization here.
+		GD.Print("Hello from C# to Godot :)");
+		_sprite2D = GetNode<AnimatedSprite2D>("Sprite2D");
+		_collisionShape2D = GetNode<CollisionShape2D>("CollisionShape2D");
 
-    }
+		if (PLAYER2)
+		{
+			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
+		}
+		else{
+			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
+		}
+	}
 
-    public override void _Process(double delta)
-    {
-        // Called every frame. Delta is time since the last frame.
-        // Update game logic here.
-    }
+	public override void _Process(double delta)
+	{
+		_player_health_label.Text = _health.ToString();
+		// Called every frame. Delta is time since the last frame.
+		// Update game logic here.
+	}
 
-    public override void _Input(InputEvent @event)
-    {
-        //print for debugging
-        //GD.Print(@event.AsText());
-    }
+	public override void _Input(InputEvent @event)
+	{
+		//print for debugging
+		//GD.Print(@event.AsText());
+	}
+
 
     public override void _PhysicsProcess(double delta)
     {
@@ -145,24 +158,24 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 
-            }
+			}
 
-        }
-        else
-        {
-            // This handles the character slowing to a stop
-            _localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
+		}
+		else
+		{
+			// This handles the character slowing to a stop
+			_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 
-            if (IsOnFloor()){
-                _sprite2D.Play("default");
-            }
-        }
-        Velocity=_localVelocity;
-        
-        //GD.Print(Velocity.ToString());
-    
-        MoveAndSlide();
-    }
+			if (IsOnFloor()){
+				_sprite2D.Play("default");
+			}
+		}
+		Velocity=_localVelocity;
+		
+		//GD.Print(Velocity.ToString());
+	
+		MoveAndSlide();
+	}
 }
 
 
