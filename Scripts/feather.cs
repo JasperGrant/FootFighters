@@ -13,7 +13,7 @@ public partial class Feather : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        ApplyImpulse(velocity);
+		ApplyImpulse(velocity);
 		GravityScale = 0;
 		ContactMonitor = true;
 		MaxContactsReported = 1000;

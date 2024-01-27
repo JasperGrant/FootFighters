@@ -177,7 +177,6 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_mccna")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
