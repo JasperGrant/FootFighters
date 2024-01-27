@@ -58,7 +58,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
 	private Vector2 _localVelocity = new(0,0);
 
-    private float _baseScale =0.2F;
+    private float _baseSpriteScale =0.2F;
+    private float _baseColliderScale =1F;
 
 	private PlayerMappings _inputMappings = new(PLAYER2);
 	public AnimatedSprite2D _sprite2D;
@@ -127,41 +128,31 @@ public partial class PlayerCharacter : CharacterBody2D
 		//GD.Print(direction.ToString());
 		if (direction!=0F)
 		{
+			_localVelocity.X = direction * SPEED;
+
+			var newSpriteScale = _sprite2D.Scale;
+			var newColliderScale = _collisionShape2D.Scale;
+			//allows shinking the character if stick is not fully pushed
 			if(Input.IsActionJustPressed(_inputMappings.Special1))
 			{
-				_localVelocity.X = direction * SPEED;
-
-				var newScale = _sprite2D.Scale;
-				//allows shinking the character if stick is not fully pushed
-				newScale.X = direction*_baseScale;
-				_sprite2D.Scale = newScale;
-				_collisionShape2D.Scale=newScale;
-				//_sprite2D.FlipH = direction<0;
-				//GD.Print(Scale.X);
-				if (IsOnFloor()){
-					//_sprite2D.Play("run");
-				}
-
-			} 
+				newSpriteScale.X = direction*_baseSpriteScale;
+				newColliderScale.X = direction*_baseColliderScale;
+			}
 			else
 			{
-				_localVelocity.X = direction * SPEED;
-
-				var newScale = _sprite2D.Scale;
-				//this maps the controller iputs to match the full on off of the arrow keys
-				newScale.X = (direction>0 ? 1:-1)*_baseScale;
-				_sprite2D.Scale = newScale;
-				_collisionShape2D.Scale=newScale;
-				//_sprite2D.FlipH = direction<0;
-				//GD.Print(Scale.X);
-				if (IsOnFloor()){
-					//_sprite2D.Play("run");
-				}
-
-
+			//allows shinking the character if stick is not fully pushed
+				newSpriteScale.X = (direction>0 ? 1:-1)*_baseSpriteScale;
+				newColliderScale.X = (direction>0 ? 1:-1)*_baseColliderScale;
 
 			}
 
+			_sprite2D.Scale = newSpriteScale;
+			_collisionShape2D.Scale=newColliderScale;
+			//_sprite2D.FlipH = direction<0;
+			//GD.Print(Scale.X);
+			if (IsOnFloor()){
+				//_sprite2D.Play("run");
+			}
 		}
 		else
 		{
