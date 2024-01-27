@@ -68,7 +68,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	//members
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
 	private Vector2 _localVelocity = new(0,0);
-    private Vector2 _inputControlVector = new(0,0);
+	private Vector2 _inputControlVector = new(0,0);
 
 	private float _baseScale =0.2F;
 
@@ -83,8 +83,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	public void decrement_health(int diff){
 		_health -= diff;
 	}
-    private int _allowedJumpAmount = 2;
-    private int _currentJumps = 0;
+	private int _allowedJumpAmount = 2;
+	private int _currentJumps = 0;
 
 	private float _flatProjectileVelo = 200.0F;
 	private float _factorProjectileVelo = 500.0F; 
@@ -151,14 +151,14 @@ public partial class PlayerCharacter : CharacterBody2D
 			//_sprite2D.Play("jump");
 		}
 
-        //get vector of input control direction
-        var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-        var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
-        _inputControlVector.X=xdirection;
-        _inputControlVector.Y=ydirection;
+		//get vector of input control direction
+		var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+		var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+		_inputControlVector.X=xdirection;
+		_inputControlVector.Y=ydirection;
 
 
-        /*
+		/*
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
@@ -231,28 +231,28 @@ public partial class PlayerCharacter : CharacterBody2D
 			if(IsAllowedToJump())
 			{
 
-                if (_inputControlVector.X==0)
-                {
-                    _localVelocity.X=0;
-                    _localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH * ONLY_Y_MOTION_SCALER;    
-                }
-                else if (_inputControlVector.Y==0)
-                {
-                    _localVelocity.X = _inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER;
-                    _localVelocity.Y = 0; 
-                }
-                else
-                {
+				if (_inputControlVector.X==0)
+				{
+					_localVelocity.X=0;
+					_localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH * ONLY_Y_MOTION_SCALER;    
+				}
+				else if (_inputControlVector.Y==0)
+				{
+					_localVelocity.X = _inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER;
+					_localVelocity.Y = 0; 
+				}
+				else
+				{
 				_localVelocity.X = _inputControlVector.X * HOP_STRENGTH;
-                _localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH;
-                }
+				_localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH;
+				}
 
 
 
 
 
 
-                GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
+				GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
 
 				// var newScale = _sprite2D.Scale;
 				// //allows shinking the character if stick is not fully pushed
@@ -272,8 +272,8 @@ public partial class PlayerCharacter : CharacterBody2D
         else
         {
 			if (IsOnFloor()){
-                // This handles the character slowing to a stop on the floor
-                _localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
+				// This handles the character slowing to a stop on the floor
+				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
 				_sprite2D.Play("default");
 			}
         }
@@ -286,24 +286,24 @@ public partial class PlayerCharacter : CharacterBody2D
 	}
 
 
-    private bool IsAllowedToJump()
-    {
-        if (IsOnFloor() || IsOnWall())
-        {
-            _currentJumps=1;
-            return true;
-        }
-        else if (_currentJumps<_allowedJumpAmount)
-        {
-            _currentJumps++;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+	private bool IsAllowedToJump()
+	{
+		if (IsOnFloor() || IsOnWall())
+		{
+			_currentJumps=1;
+			return true;
+		}
+		else if (_currentJumps<_allowedJumpAmount)
+		{
+			_currentJumps++;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 
-    }
+	}
 
 
 

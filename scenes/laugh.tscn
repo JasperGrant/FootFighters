@@ -31,7 +31,6 @@ grow_vertical = 2
 texture = ExtResource("2_2udk7")
 
 [node name="Winner" type="Label" parent="."]
-unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -54,3 +53,5 @@ offset_right = 760.0
 offset_bottom = 598.0
 text = "Play again"
 script = ExtResource("3_ccdsp")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
