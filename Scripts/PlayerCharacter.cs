@@ -81,10 +81,6 @@ public partial class PlayerCharacter : CharacterBody2D
 	public Label _player_health_label;
 
 	private int _health = 5;
-
-	public void decrement_health(int diff){
-		_health -= diff;
-	}
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
@@ -113,10 +109,10 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (_isPlayer2)
 		{
-			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P2_Health");
+			_player_health_label = GetNode<Label>("../UI/Health_Bars/P2_Health");
 		}
 		else{
-			_player_health_label = GetNode<Label>("/root/Arena 1/UI/Health_Bars/P1_Health");
+			_player_health_label = GetNode<Label>("../UI/Health_Bars/P1_Health");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
 	}
@@ -126,10 +122,9 @@ public partial class PlayerCharacter : CharacterBody2D
 		_player_health_label.Text = _health.ToString();
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
-			GetTree().ChangeSceneToFile("res://scenes/laugh.tscn");
 			var next_scene=_laughScene.Instantiate();
-			GetNode<Node>("/root").AddChild(next_scene);
-			GD.Print("Hello");
+			GetNode<Node>("/root/BaseNode").AddChild(next_scene);	
+			// GD.Print(GetNode<Node>("/root").GetTreeStringPretty());
 			GetParent().QueueFree();
 		}
 		// Called every frame. Delta is time since the last frame.
@@ -213,7 +208,7 @@ public partial class PlayerCharacter : CharacterBody2D
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			_featherRef.setVel(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
+			_featherRef.setVelo(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
 
 			if(_isPlayer2)
 			{
@@ -316,7 +311,9 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 
-
+	public void decrement_health(int diff){
+		_health -= diff;
+	}
 
 
 

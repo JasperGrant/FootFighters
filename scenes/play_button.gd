@@ -7,5 +7,5 @@ func _on_pressed():
 	#ResourceLoader.load_threaded_request(NEXT_SCENE_PATH)
 	#var next_scene = ResourceLoader.load_threaded_get(NEXT_SCENE_PATH)
 	var next_scene = preload(NEXT_SCENE_PATH).instantiate()
-	get_node("/root").add_child(next_scene)
+	get_node("/root/BaseNode").add_child(next_scene)
 	get_parent().queue_free()
