@@ -220,7 +220,9 @@ public partial class PlayerCharacter : CharacterBody2D
 			}
 		}
 
-
+		//Basic hop functionality
+		//movement in only one direction is reduced to allow porpotionally more acceleration on diagonals
+		//This makes the diagonal movements feel more equivalent to movements in just X or Y
 		if (Input.IsActionJustPressed(_inputMappings.Jump) && _inputControlVector.Length()!=0)
 		{
 			if(IsAllowedToJump())
@@ -307,9 +309,6 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 	}
-
-
-
 
 	public void decrement_health(int diff){
 		_health -= diff;
