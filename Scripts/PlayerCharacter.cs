@@ -153,6 +153,9 @@ public partial class PlayerCharacter : CharacterBody2D
 		//get vector of input control direction
 		var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
 		var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+		float scale_needed_for_unit_mag = MathF.Sqrt(xdirection*xdirection+ydirection*ydirection);
+		xdirection = (scale_needed_for_unit_mag!=0) ? xdirection/scale_needed_for_unit_mag:xdirection;
+		ydirection = (scale_needed_for_unit_mag!=0) ? ydirection/scale_needed_for_unit_mag:ydirection;
 		_inputControlVector.X=xdirection;
 		_inputControlVector.Y=ydirection;
 
@@ -204,18 +207,12 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (Input.IsActionJustPressed(_inputMappings.Special1))
 		{
-			var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-			var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
-			float scale_needed_for_unit_mag = MathF.Sqrt(x_shoot*x_shoot+y_shoot*y_shoot);
-			x_shoot = x_shoot/scale_needed_for_unit_mag;
-			y_shoot = y_shoot/scale_needed_for_unit_mag;
-
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
 			
-			_featherRef.setVelo(_projectileVelo*x_shoot,_projectileVelo*y_shoot);
+			_featherRef.setVelo(_projectileVelo*_inputControlVector.X,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
 			{
