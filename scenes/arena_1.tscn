@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://ddxoc4ahkadev" path="res://themes/laugh_bar_P1.tres" id="5_51ky1"]
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
 [ext_resource type="Theme" uid="uid://cl1xnf3fb7un1" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
-[ext_resource type="Texture2D" uid="uid://dknehyw2lxqt3" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="Texture2D" uid="uid://b11cuddm8i10f" path="res://Laugh.png" id="6_tpg8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
