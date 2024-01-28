@@ -12,7 +12,7 @@ public partial class Feather : RigidBody2D
 
 	private string sender;
 
-	public int MaxCollisions=4;
+	public int MaxCollisions=0;
 	private int _currentCollisions=0;
 
 	private Timer _lifetimeTimer;
