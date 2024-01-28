@@ -7,7 +7,8 @@ public partial class Shoebox : Area2D
 	bool visible = false;
 	private Timer _timer;
 	private AnimatedSprite2D _sprite;
-	private CollisionObject2D _collider;
+	private CollisionShape2D _collider;
+	private AudioStreamPlayer _sound;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -15,7 +16,8 @@ public partial class Shoebox : Area2D
 	{
 		_timer = GetNode<Timer>("Timer");
 		_sprite = GetNode<AnimatedSprite2D>("Sprite");
-		_collider= GetNode<CollisionObject2D>("Collider");
+		_collider= GetNode<CollisionShape2D>("Collider");
+		_sound = GetNode<AudioStreamPlayer>("Sound");
 		_sprite.Visible = false;
 		SetCollisionLayerValue(4,false);
 	}
@@ -32,9 +34,10 @@ public partial class Shoebox : Area2D
 		{
 			node.GetNode<PlayerCharacter>(node.GetPath()).giveShoe();
 		}
-			visible = false;
-			_sprite.Visible = false;
-			SetCollisionLayerValue(4,false);		
+		_sound.Play();
+		visible = false;
+		_sprite.Visible = false;
+		SetCollisionLayerValue(4,false);		
 	}
 
 	public void TimeOut()
