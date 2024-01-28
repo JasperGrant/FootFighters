@@ -5,21 +5,22 @@ public partial class Feather : RigidBody2D
 {
 
 	public int X = 5;
-	public Godot.Vector2 velocity = new(-300,300);
-	private AnimatedSprite2D sprite;
+	public Godot.Vector2 velocity = new(0,0);
+	private AnimatedSprite2D __sprite;
 
 	private string sender;
 
-
+	private AudioStreamPlayer _ticklesound;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		//ApplyImpulse(velocity);
+		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
+
 		GravityScale = 0;
 		ContactMonitor = true;
 		MaxContactsReported = 1000;
-		GlobalRotation = velocity.Angle();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,14 +33,18 @@ public partial class Feather : RigidBody2D
 		if(node.GetType().ToString() == "PlayerCharacter")
 		{
 			node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
+			ContactMonitor = false;
 		}
-		QueueFree();		
+		QueueFree();
+		_ticklesound.Play();
 	}
 
 	public void setVelo(float X, float Y)
 	{
 		velocity = new(X,Y);
 		ApplyImpulse(velocity);
+		GlobalRotation = velocity.Angle();
+		
 	}
 
 

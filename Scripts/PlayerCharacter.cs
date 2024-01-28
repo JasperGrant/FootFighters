@@ -101,7 +101,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
-		_jumpsound = GetNode<AudioStreamPlayer>("JumpSound");
+		_jumpsound = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
@@ -235,8 +235,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			if(IsAllowedToJump())
 			{
-				_sprite2D.Stop();
 				_sprite2D.Play("Spring");
+				_jumpsound.Play();
 				isInAir = true;
 
 				if (_inputControlVector.X==0)
