@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/laugh.cs" id="1_0vgjt"]
 [ext_resource type="Texture2D" uid="uid://2dxd7a783c4c" path="res://YouLaughYouLose.png" id="2_2udk7"]
-[ext_resource type="Texture2D" uid="uid://dyppnr85f5jq0" path="res://Art/Backgrounds/blue.png" id="2_lk6cl"]
-[ext_resource type="Texture2D" uid="uid://ckqvcxxmv80x0" path="res://Art/Backgrounds/red.png" id="2_v17le"]
+[ext_resource type="Texture2D" uid="uid://cdopx24wdhiks" path="res://Art/Backgrounds/blue.png" id="2_lk6cl"]
+[ext_resource type="Texture2D" uid="uid://klso74l88qx5" path="res://Art/Backgrounds/red.png" id="2_v17le"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_ccdsp"]
-[ext_resource type="Texture2D" uid="uid://c74wh2v2v0rne" path="res://Art/BlueToenails.png" id="3_j37c4"]
-[ext_resource type="Theme" uid="uid://efm0upm4fq4u" path="res://themes/play_button.tres" id="4_3yenc"]
-[ext_resource type="Texture2D" uid="uid://85oepub211ib" path="res://Art/RedToenails.png" id="7_beryb"]
+[ext_resource type="Texture2D" uid="uid://d0xffmivbuqpm" path="res://Art/BlueToenails.png" id="3_j37c4"]
+[ext_resource type="Theme" uid="uid://bia45wph86mr5" path="res://themes/play_button.tres" id="4_3yenc"]
+[ext_resource type="Texture2D" uid="uid://bmknr6kn7ssdj" path="res://Art/RedToenails.png" id="7_beryb"]
 
 [node name="laugh_root" type="Node"]
 script = ExtResource("1_0vgjt")
