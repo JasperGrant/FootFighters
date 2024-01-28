@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dlh72gx6fdxe1"]
 
-[ext_resource type="Texture2D" uid="uid://bhiqml8an8jg" path="res://Art/Lastlastcarnival.png" id="1_5xuey"]
+[ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
@@ -600,7 +600,7 @@ sources/0 = SubResource("TileSetAtlasSource_30h5m")
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
-texture = ExtResource("1_5xuey")
+texture = ExtResource("1_dc6gh")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -614,12 +614,12 @@ script = ExtResource("3_06nv1")
 [node name="Player1" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(952, 617)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 
 [node name="Player2" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(1257, 617)
-collision_layer = 4
-collision_mask = 7
+collision_layer = 12
+collision_mask = 15
 
 [node name="UI" type="CanvasLayer" parent="."]
 
