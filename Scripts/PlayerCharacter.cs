@@ -327,7 +327,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 		
-		GD.Print(Velocity.ToString());
+		//GD.Print(Velocity.ToString());
 	
 		MoveAndSlide();
 
