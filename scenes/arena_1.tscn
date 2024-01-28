@@ -1,15 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=17 format=3 uid="uid://dlh72gx6fdxe1"]
 
-[ext_resource type="Texture2D" uid="uid://bqs1ucs6fkd0k" path="res://Art/grayscaleBG.png" id="1_vtopq"]
+[ext_resource type="Texture2D" uid="uid://klso74l88qx5" path="res://Art/Backgrounds/red.png" id="1_p33j4"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
 [ext_resource type="Script" path="res://Scripts/MultiplayerCam.gd" id="4_67anf"]
-[ext_resource type="Theme" uid="uid://ddxoc4ahkadev" path="res://themes/laugh_bar_P1.tres" id="5_51ky1"]
+[ext_resource type="Theme" uid="uid://d03ebmplk1iqm" path="res://themes/laugh_bar_P1.tres" id="5_51ky1"]
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
-[ext_resource type="Theme" uid="uid://cl1xnf3fb7un1" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
-[ext_resource type="Texture2D" uid="uid://dknehyw2lxqt3" path="res://Laugh.png" id="6_tpg8f"]
-[ext_resource type="PackedScene" uid="uid://c67xjs6jbjwm5" path="res://scenes/pause_menu.tscn" id="9_1hmiu"]
+[ext_resource type="Theme" uid="uid://gc7m2230nfeq" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
+[ext_resource type="Texture2D" uid="uid://dddpkn5kvxxtg" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="PackedScene" uid="uid://405toogifqno" path="res://scenes/shoebox.tscn" id="10_mwfjn"]
+[ext_resource type="Texture2D" uid="uid://cdopx24wdhiks" path="res://Art/Backgrounds/blue.png" id="11_vfn7l"]
+[ext_resource type="Texture2D" uid="uid://bfajkw7so5gn6" path="res://Art/Backgrounds/yellow.png" id="12_38dgd"]
+[ext_resource type="Texture2D" uid="uid://bjtwcls2dlpkg" path="res://Art/Backgrounds/green.png" id="12_wb4nt"]
+[ext_resource type="Texture2D" uid="uid://dfxxgll5ihr4c" path="res://Art/Backgrounds/purple.png" id="13_xwmq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -596,11 +600,12 @@ sources/0 = SubResource("TileSetAtlasSource_30h5m")
 
 [node name="Arena 1" type="Node"]
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="RedBG" type="TextureRect" parent="."]
+z_index = -10
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
-texture = ExtResource("1_vtopq")
+texture = ExtResource("1_p33j4")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -707,3 +712,42 @@ texture = ExtResource("6_bk6n0")
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_67anf")
+
+[node name="shoebox" parent="." instance=ExtResource("10_mwfjn")]
+position = Vector2(908, 375)
+
+[node name="BlueBG" type="TextureRect" parent="."]
+visible = false
+z_index = -10
+texture_filter = 1
+offset_right = 2091.0
+offset_bottom = 1229.0
+texture = ExtResource("11_vfn7l")
+stretch_mode = 1
+
+[node name="GreenBG" type="TextureRect" parent="."]
+visible = false
+z_index = -10
+texture_filter = 1
+offset_right = 2091.0
+offset_bottom = 1229.0
+texture = ExtResource("12_wb4nt")
+stretch_mode = 1
+
+[node name="YellowBG" type="TextureRect" parent="."]
+visible = false
+z_index = -10
+texture_filter = 1
+offset_right = 2091.0
+offset_bottom = 1229.0
+texture = ExtResource("12_38dgd")
+stretch_mode = 1
+
+[node name="PurpleBG" type="TextureRect" parent="."]
+visible = false
+z_index = -10
+texture_filter = 1
+offset_right = 2091.0
+offset_bottom = 1229.0
+texture = ExtResource("13_xwmq6")
+stretch_mode = 1
