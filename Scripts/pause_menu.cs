@@ -17,9 +17,9 @@ public void toggle_paused(){
 	Visible = is_paused;
 	if (is_paused)
 	{
-		_resumeButton = GetNode<Button>("ResumeButton");
-		//_resumeButton.GrabFocus();
-		_resumeButton.CallDeferred("GrabFocus");
+		_resumeButton = GetNode<Button>("./VBoxContainer/ResumeButton");
+		_resumeButton.GrabFocus();
+		//_resumeButton.CallDeferred("GrabFocus");
 	}
 	else
 	{
