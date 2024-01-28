@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://s5aky3wgxpb7"]
+[gd_scene load_steps=18 format=3 uid="uid://s5aky3wgxpb7"]
 
 [ext_resource type="Script" path="res://Scripts/Feather.cs" id="1_xqud7"]
 [ext_resource type="Texture2D" uid="uid://b4ueubbbpxgg2" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0000.png" id="2_r4qdq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b71gd8lfhasxy" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0008.png" id="11_lyemb"]
 [ext_resource type="Texture2D" uid="uid://d1rw7acfyd77l" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0009.png" id="12_s3uqy"]
 [ext_resource type="Texture2D" uid="uid://dx5mfdhsprfqd" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0010.png" id="13_olncj"]
+[ext_resource type="AudioStream" uid="uid://j72hsysrd11b" path="res://Sounds/Tickle.mp3" id="15_txd83"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
 radius = 2.5
@@ -78,10 +79,13 @@ texture_filter = 1
 position = Vector2(2.2375, 0.29375)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_j8poa")
-frame_progress = 0.771152
+frame_progress = 0.672417
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ol4vl")
 autoplay = true
+
+[node name="TickleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_txd83")
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
