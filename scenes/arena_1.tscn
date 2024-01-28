@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=11 format=3 uid="uid://dlh72gx6fdxe1"]
 
 [ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
 [ext_resource type="Script" path="res://Scripts/MultiplayerCam.gd" id="4_67anf"]
+[ext_resource type="Theme" uid="uid://beyqivaso7d56" path="res://themes/laugh_bar.tres" id="5_4ci76"]
+[ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
+[ext_resource type="Texture2D" uid="uid://dknehyw2lxqt3" path="res://Laugh.png" id="6_tpg8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -621,37 +624,81 @@ collision_mask = 7
 [node name="Health_Bars" type="Panel" parent="UI"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 111.0
+offset_bottom = 96.0
 grow_horizontal = 2
+size_flags_vertical = 0
 
-[node name="P1_Health" type="Label" parent="UI/Health_Bars"]
+[node name="P1_Health_Bar" type="ProgressBar" parent="UI/Health_Bars"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -57.5
-offset_right = 175.0
-offset_bottom = 51.5
+offset_top = -17.0
+offset_right = 437.0
+offset_bottom = 17.0
 grow_vertical = 2
-text = "3/5"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme = ExtResource("5_4ci76")
+max_value = 5.0
+step = 1.0
+show_percentage = false
 
-[node name="P2_Health" type="Label" parent="UI/Health_Bars"]
+[node name="P2_Health_Bar" type="ProgressBar" parent="UI/Health_Bars"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -191.0
-offset_top = -56.0
-offset_bottom = 56.0
+offset_left = -5.0
+offset_top = 15.0
+offset_right = 423.0
+offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "2/5"
-horizontal_alignment = 1
-vertical_alignment = 1
+rotation = -3.14159
+theme = ExtResource("5_4ci76")
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="Laughing_Face_1" type="TextureRect" parent="UI/Health_Bars"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -47.0
+offset_right = 87.0
+offset_bottom = 44.0
+grow_vertical = 2
+texture = ExtResource("6_tpg8f")
+expand_mode = 1
+
+[node name="Laughing_Face_2" type="TextureRect" parent="UI/Health_Bars"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -40.0
+offset_right = 6.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_tpg8f")
+expand_mode = 1
+
+[node name="Clown" type="TextureRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.5
+offset_right = 322.5
+offset_bottom = 105.0
+grow_horizontal = 2
+texture = ExtResource("6_bk6n0")
 
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true

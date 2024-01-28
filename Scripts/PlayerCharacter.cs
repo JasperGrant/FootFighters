@@ -81,7 +81,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private AudioStreamPlayer _ticklesound;
 
 
-	public Label _player_health_label;
+	public ProgressBar _player_health_label;
 
 	private int _health = 5;
 	private int _allowedJumpAmount = 2;
@@ -115,17 +115,18 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (_isPlayer2)
 		{
-			_player_health_label = GetNode<Label>("../UI/Health_Bars/P2_Health");
+			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P2_Health_Bar");
 		}
 		else{
-			_player_health_label = GetNode<Label>("../UI/Health_Bars/P1_Health");
+			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P1_Health_Bar");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
 	}
 
 	public override void _Process(double delta)
 	{
-		_player_health_label.Text = _health.ToString();
+		// Magic number to make bars og up instead of down
+		_player_health_label.Value = (5 - _health);
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
 			var next_scene=_laughScene.Instantiate();
@@ -292,7 +293,6 @@ public partial class PlayerCharacter : CharacterBody2D
 				// newScale.X = xdirection*_baseScale;
 				// _sprite2D.Scale = newScale;
 				// _collisionShape2D.Scale=newScale;
-				//_sprite2D.FlipH = direction<0;
 				//GD.Print(Scale.X);
 				if (IsOnFloor()){
 					//_sprite2D.Play("run");
@@ -317,6 +317,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 		Velocity=_localVelocity;
+		_sprite2D.FlipH = Velocity.X<0;
 		
 		//GD.Print(Velocity.ToString());
 	
