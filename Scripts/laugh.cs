@@ -11,30 +11,38 @@ public partial class laugh : Node
 	private TextureRect _redFoot;
 	private TextureRect _blueFoot;
 
+	private Button _playAgrainButton;
 
 	public void gameOver(bool blueLost)
 	{
+		GD.Print("In Game Over");
 		if(blueLost)
 		{
 			_blue.Visible = false;
-			_blueFoot.Visible = false;
+			_blueFoot.Visible = true;
 			_red.Visible = true;
-			_redFoot.Visible = true;
+			_redFoot.Visible = false;
 		}
 		else
 		{
 			_blue.Visible = true;
-			_blueFoot.Visible = true;
+			_blueFoot.Visible = false;
 			_red.Visible = false;
-			_redFoot.Visible = false;
+			_redFoot.Visible = true;
 		}
+		GD.Print("Game Over Done");
 	}
 	public override void _Ready()
 	{
 		_blue = GetNode<TextureRect>("Blue");
 		_red = GetNode<TextureRect>("Red");
+		_blueFoot = GetNode<TextureRect>("BlueToenails");
 		_redFoot = GetNode<TextureRect>("RedToenails");
-		_redFoot = GetNode<TextureRect>("RedToenails");
+
+		_playAgrainButton = GetNode<Button>("FinishButton");
+		_playAgrainButton.GrabFocus();
+		GD.Print("Ready done");
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
