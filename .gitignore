@@ -7,3 +7,4 @@ worknotes/
 #vs code files (primarily for those specific to user)
 .vscode/
 
+*.import
