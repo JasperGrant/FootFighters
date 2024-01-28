@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 
@@ -84,8 +85,10 @@ public partial class PlayerCharacter : CharacterBody2D
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
-	private float _flatProjectileVelo = 500.0F;
-	private float _factorProjectileVelo = 500.0F; 
+	private float _flatProjectileVelo = 900.0F; 
+	private float _factorProjectileVelo = 900.0F; 
+
+	private float _projectileVelo = 900.0F;
 
 	private Feather _featherRef;
 
@@ -203,12 +206,16 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
 			var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+			float scale_needed_for_unit_mag = MathF.Sqrt(x_shoot*x_shoot+y_shoot*y_shoot);
+			x_shoot = x_shoot/scale_needed_for_unit_mag;
+			y_shoot = y_shoot/scale_needed_for_unit_mag;
 
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			_featherRef.setVelo(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
+			
+			_featherRef.setVelo(_projectileVelo*x_shoot,_projectileVelo*y_shoot);
 
 			if(_isPlayer2)
 			{
