@@ -282,6 +282,7 @@ stream = ExtResource("43_lhh5v")
 volume_db = -20.0
 
 [node name="Arrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(7.62939e-06, 2.38419e-07)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("44_ttndk")
