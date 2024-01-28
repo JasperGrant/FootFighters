@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Godot;
 
 
@@ -93,6 +94,23 @@ public partial class PlayerCharacter : CharacterBody2D
 	private float _projectileVelo = 900.0F;
 
 	private Feather _featherRef;
+
+	//enum to identify power ups, set as flags to allow multiple to be active
+	[Flags]
+	public enum EPowerUps
+	{
+		None = 0,
+		XAccel = 1<<0,
+		Ricochet = 1<<1
+
+	}
+
+	
+
+
+
+
+
 
 
 	public override void _Ready()
@@ -228,10 +246,28 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
+			float xvelo=0F;
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			//conditional prevents feathers from staying in player
-			float xvelo=(_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:(_sprite2D.FlipH)?_projectileVelo*-1:_projectileVelo;
+			//conditional prevents feathers from staying in player if stick is not pushed
+			if (_inputControlVector.X!=0 || _inputControlVector.Y!=0)
+			{
+				//Normal behavior if stick is pushed
+				xvelo=_projectileVelo*_inputControlVector.X;
+			}
+			else
+			{
+				//if stick is not pushed, do a shot in just +X or -X depending on character direction
+				if (_sprite2D.FlipH)
+				{
+					xvelo=_projectileVelo*-1;
+
+				}
+				else
+				{
+					xvelo=_projectileVelo;
+				}
+			}
 			_featherRef.setVelo(xvelo,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
