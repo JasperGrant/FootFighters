@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/MultiplayerCam.gd" id="4_67anf"]
 [ext_resource type="Theme" uid="uid://beyqivaso7d56" path="res://themes/laugh_bar.tres" id="5_4ci76"]
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
-[ext_resource type="Texture2D" uid="uid://b11cuddm8i10f" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="Texture2D" uid="uid://dddpkn5kvxxtg" path="res://Laugh.png" id="6_tpg8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
