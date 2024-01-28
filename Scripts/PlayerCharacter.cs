@@ -113,7 +113,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	{
 		None = 0,
 		XAccel = 1<<0,
-		Ricochet = 1<<1
+		Ricochet = 1<<1,
+		InfJump =1<<2
 
 	}
 
@@ -405,7 +406,11 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private bool IsAllowedToJump()
 	{
-		if (IsOnFloor() || IsOnWall())
+		if ((_currentPowerState& EPowerUps.InfJump)!=0)
+		{
+			return true;
+		}
+		else if (IsOnFloor() || IsOnWall())
 		{
 			_currentJumps=1;
 			return true;
@@ -434,7 +439,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D.Scale  = _powerScale;
 		_sprite2D.Position = _powerPosition;
 
-		_currentPowerState|=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
+		_currentPowerState=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
 		//_currentPowerState=EPowerUps.XAccel;
 		GD.Print($"New Power Up {_currentPowerState}");
 		_powerTimer.Start();
