@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://be1sxce1ynfbr"]
+[gd_scene load_steps=45 format=3 uid="uid://be1sxce1ynfbr"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="1_ofsnx"]
 [ext_resource type="Texture2D" uid="uid://ba00obwrg1man" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0000.png" id="2_vd1x8"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://crmlj6octyitn" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0028.png" id="39_frmvy"]
 [ext_resource type="Texture2D" uid="uid://dga7ad23w4667" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0029.png" id="40_fjof7"]
 [ext_resource type="Texture2D" uid="uid://b14pmk8fff2we" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0030.png" id="41_on176"]
+[ext_resource type="AudioStream" uid="uid://bujvk1vb5jmkq" path="res://Sounds/Jump.mp3" id="42_dx3le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5psfv"]
 size = Vector2(46, 32)
@@ -200,5 +201,9 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Spring"
+animation = &"Idle"
 autoplay = "Idle"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_dx3le")
+volume_db = -30.0
