@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://405toogifqno"]
+
+[ext_resource type="Script" path="res://Scripts/Shoebox.cs" id="1_7gxsb"]
+[ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_v48dj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu541"]
+atlas = ExtResource("1_v48dj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwiyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu541")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ypy4"]
+radius = 28.0
+
+[node name="shoebox" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_7gxsb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_iwiyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CircleShape2D_7ypy4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="OnCollision"]

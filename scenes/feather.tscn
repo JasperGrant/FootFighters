@@ -78,10 +78,12 @@ texture_filter = 1
 position = Vector2(2.2375, 0.29375)
 scale = Vector2(0.0759615, 0.0784357)
 sprite_frames = SubResource("SpriteFrames_j8poa")
+autoplay = "default"
 frame_progress = 0.356969
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ol4vl")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
