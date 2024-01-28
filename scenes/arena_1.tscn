@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=18 format=3 uid="uid://dlh72gx6fdxe1"]
 
+[ext_resource type="Script" path="res://Scripts/Arena_1.cs" id="1_2mwp6"]
 [ext_resource type="Texture2D" uid="uid://klso74l88qx5" path="res://Art/Backgrounds/red.png" id="1_p33j4"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
@@ -599,9 +600,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_30h5m")
 
 [node name="Arena 1" type="Node"]
+script = ExtResource("1_2mwp6")
 
 [node name="RedBG" type="TextureRect" parent="."]
-z_index = -10
+z_index = -20
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
@@ -706,8 +708,6 @@ offset_right = 322.5
 offset_bottom = 105.0
 grow_horizontal = 2
 texture = ExtResource("6_bk6n0")
-
-[node name="Pause Menu" parent="UI" instance=ExtResource("9_1hmiu")]
 
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true

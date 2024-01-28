@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://deg34xi1lc36x"]
 
-[ext_resource type="Texture2D" uid="uid://beclvnxxvc36r" path="res://Background.png" id="1_3edbb"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_xa05p"]
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="2_kpnsr"]
+[ext_resource type="Texture2D" uid="uid://bd2j74d5dj225" path="res://Art/Lastlastcarnival.png" id="2_sxea6"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
-[ext_resource type="Texture2D" uid="uid://c74wh2v2v0rne" path="res://Art/BlueToenails.png" id="5_iv8su"]
-[ext_resource type="Theme" uid="uid://efm0upm4fq4u" path="res://themes/play_button.tres" id="6_3peod"]
-[ext_resource type="Texture2D" uid="uid://85oepub211ib" path="res://Art/RedToenails.png" id="6_nbanb"]
+[ext_resource type="Texture2D" uid="uid://d0xffmivbuqpm" path="res://Art/BlueToenails.png" id="5_iv8su"]
+[ext_resource type="Theme" uid="uid://bia45wph86mr5" path="res://themes/play_button.tres" id="6_3peod"]
+[ext_resource type="Texture2D" uid="uid://bmknr6kn7ssdj" path="res://Art/RedToenails.png" id="6_nbanb"]
 [ext_resource type="Script" path="res://Scripts/QuitButton.gd" id="8_l5hhx"]
 
 [node name="root" type="Node"]
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_3edbb")
+texture = ExtResource("2_sxea6")
 stretch_mode = 1
 
 [node name="BlueToenails" type="TextureRect" parent="Background"]
@@ -90,9 +90,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 46.0
+offset_left = 47.0
 offset_top = -221.0
-offset_right = 280.0
+offset_right = 281.0
 offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
