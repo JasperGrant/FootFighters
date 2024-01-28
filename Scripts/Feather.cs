@@ -38,7 +38,7 @@ public partial class Feather : RigidBody2D
 		else{
 			var _Particle = ParticleScene.Instantiate() as GpuParticles2D;
 		_Particle.GlobalPosition = this.Position;
-		_Particle.RotationDegrees = -this.RotationDegrees;
+		_Particle.RotationDegrees = this.RotationDegrees + 180;
 		GetParent().AddChild(_Particle);
 		}
 		QueueFree();
