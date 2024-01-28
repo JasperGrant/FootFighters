@@ -58,7 +58,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export] 
 	private const float ONLY_X_MOTION_SCALER=0.6F;
 
-	bool isInAir;
+	private bool isInAir = false;
+	private bool hasPower = false; 
 
 	private bool _isPlayer2 = false;
 	private string _nodePath = "";
@@ -70,6 +71,11 @@ public partial class PlayerCharacter : CharacterBody2D
 	private Variant _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity");
 	private Vector2 _localVelocity = new(0,0);
 	private Vector2 _inputControlVector = new(0,0);
+	
+	private Vector2 _powerScale = new((float)0.13,(float)0.13);
+	private Vector2 _nopowerScale = new((float)0.2,(float)0.2);
+	private Vector2 _powerPosition = new(5,-7);
+	private Vector2 _nopowerPosition = new(0,0);
 
 	private float _baseScale =0.2F;
 
@@ -196,52 +202,6 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 		_arrow.Rotation = _inputControlVector.Angle();
 
-		/*
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		var direction = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-		//GD.Print(direction.ToString());
-		if (direction!=0F)
-		{
-			_localVelocity.X = direction * SPEED;
-
-			var newSpriteScale = _sprite2D.Scale;
-			var newColliderScale = _collisionShape2D.Scale;
-			//allows shinking the character if stick is not fully pushed
-			if(Input.IsActionJustPressed(_inputMappings.Special1))
-			{
-				newSpriteScale.X = direction*_baseSpriteScale;
-				newColliderScale.X = direction*_baseColliderScale;
-			}
-			else
-			{
-			//allows shinking the character if stick is not fully pushed
-				newSpriteScale.X = (direction>0 ? 1:-1)*_baseSpriteScale;
-				newColliderScale.X = (direction>0 ? 1:-1)*_baseColliderScale;
-
-			}
-
-			_sprite2D.Scale = newSpriteScale;
-			_collisionShape2D.Scale=newColliderScale;
-			//_sprite2D.FlipH = direction<0;
-			//GD.Print(Scale.X);
-			if (IsOnFloor()){
-				//_sprite2D.Play("run");
-			}
-		}
-		else
-		{
-			// This handles the character slowing to a stop
-			_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
-
-			if (IsOnFloor()){
-				_sprite2D.Play("default");
-			}
-		}
-
-		*/
-
-
 		if (Input.IsActionJustPressed(_inputMappings.Special1) && !(_inputControlVector.X == 0 && _inputControlVector.Y == 0))
 		{
 			var _Feather = FeatherScene.Instantiate();
@@ -288,7 +248,14 @@ public partial class PlayerCharacter : CharacterBody2D
 			if(IsAllowedToJump())
 			{
 				_sprite2D.Stop();
-				_sprite2D.Play("Spring");
+				if(hasPower)
+				{
+					_sprite2D.Play("PowerSpring");
+				}
+				else
+				{
+					_sprite2D.Play("Spring");
+				}
 				_jumpsound.Play();
 				isInAir = true;
 
@@ -384,7 +351,14 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if(isInAir && (IsOnFloor() || IsOnWall()))
 		{
-			_sprite2D.Play("Land");
+			if(hasPower)
+			{
+				_sprite2D.Play("PowerLand");
+			}
+			else
+			{
+				_sprite2D.Play("Land");
+			}
 			isInAir = false;
 		}
 	}
@@ -414,11 +388,21 @@ public partial class PlayerCharacter : CharacterBody2D
 		_ticklesound.Play();
 	}
 
-	public void giveShoe()
+	public void PowerUp()
 	{
-		
+		hasPower = true;
+		_sprite2D.Play("PowerSpring");
+		_sprite2D.Scale  = _powerScale;
+		_sprite2D.Position = _powerPosition;
 	}
+	public void PowerDown()
+	{
+		hasPower = false;
+		_sprite2D.Play("Jump");
+		_sprite2D.ApplyScale(_nopowerScale);
+		_sprite2D.Position = _nopowerPosition;
 
+	}
 
 
 
