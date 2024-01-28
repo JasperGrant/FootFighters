@@ -231,8 +231,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
 			//conditional prevents feathers from staying in player
-			//future add would be 1 or -1 depending on direction player is facing
-			_featherRef.setVelo((_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:1,_projectileVelo*_inputControlVector.Y);
+			float xvelo=(_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:(_sprite2D.FlipH)?_projectileVelo*-1:_projectileVelo;
+			_featherRef.setVelo(xvelo,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
 			{
@@ -266,7 +266,7 @@ public partial class PlayerCharacter : CharacterBody2D
 					//allow a sort of dash in air
 					if (!IsOnFloor())
 					{
-						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER*3;
+						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH * 5;
 						_localVelocity.Y = 0; 
 
 					}
@@ -326,13 +326,21 @@ public partial class PlayerCharacter : CharacterBody2D
 			else
 			{
 				//allow some movement in air
-
-				_localVelocity.X = _inputControlVector.X * SPEED * 0.8F;
+				
+				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
+				//this line is jet mode (acceleration in X)
+				//_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
 			}
 		}
 
+		if (_inputControlVector.X!=0)
+		{
+			_sprite2D.FlipH = _inputControlVector.X<0;
+		}
+
 		Velocity=_localVelocity;
-		_sprite2D.FlipH = Velocity.X<0;
+
+
 		
 		//GD.Print(Velocity.ToString());
 	
