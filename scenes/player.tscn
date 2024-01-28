@@ -275,11 +275,10 @@ autoplay = "Idle"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("42_dx3le")
-volume_db = -30.0
+volume_db = -10.0
 
 [node name="TickleSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("43_lhh5v")
-volume_db = -20.0
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
