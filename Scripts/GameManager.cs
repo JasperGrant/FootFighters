@@ -24,12 +24,17 @@ public partial class GameManager : Node
 	private PlayerCharacter _player1Reference;
 	private PlayerCharacter _player2Reference;
 
+	private AudioStreamPlayer _introMusic;
+	private AudioStreamPlayer _loopMusic;
+
 	private Timer _countdownTimer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		CurrentGameState=EGameState.Startup;
+		_introMusic = GetNode<AudioStreamPlayer>("IntroMusic");
+		_loopMusic = GetNode<AudioStreamPlayer>("LoopMusic");
 		GD.Print("GM is online");
 	}
 
@@ -98,6 +103,8 @@ public partial class GameManager : Node
 
 	}
 
-
-
+	public void LoopMusic()
+	{
+		_loopMusic.Play();
+	}
 }
