@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dlh72gx6fdxe1"]
 
-[ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
+[ext_resource type="Texture2D" uid="uid://2ejnfg6w0mdn" path="res://Art/grayscaleBG.png" id="1_vtopq"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
@@ -600,7 +600,7 @@ sources/0 = SubResource("TileSetAtlasSource_30h5m")
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
-texture = ExtResource("1_dc6gh")
+texture = ExtResource("1_vtopq")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
