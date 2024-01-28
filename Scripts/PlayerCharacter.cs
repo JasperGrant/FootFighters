@@ -292,7 +292,6 @@ public partial class PlayerCharacter : CharacterBody2D
 				// newScale.X = xdirection*_baseScale;
 				// _sprite2D.Scale = newScale;
 				// _collisionShape2D.Scale=newScale;
-				//_sprite2D.FlipH = direction<0;
 				//GD.Print(Scale.X);
 				if (IsOnFloor()){
 					//_sprite2D.Play("run");
@@ -317,6 +316,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 		Velocity=_localVelocity;
+		_sprite2D.FlipH = Velocity.X<0;
 		
 		//GD.Print(Velocity.ToString());
 	
