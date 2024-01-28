@@ -179,9 +179,10 @@ public partial class PlayerCharacter : CharacterBody2D
 		_player_health_label.Value = (5 - _health);
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
-			var next_scene=_laughScene.Instantiate();
+			var next_scene=_laughScene.Instantiate() as laugh;
 			GetNode<Node>("/root/BaseNode").AddChild(next_scene);	
 			// GD.Print(GetNode<Node>("/root").GetTreeStringPretty());
+			next_scene.gameOver(_isPlayer2);
 			GetParent().QueueFree();
 		}
 		// Called every frame. Delta is time since the last frame.
