@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://deg34xi1lc36x"]
+[gd_scene load_steps=9 format=3 uid="uid://deg34xi1lc36x"]
 
 [ext_resource type="Texture2D" uid="uid://beclvnxxvc36r" path="res://Background.png" id="1_3edbb"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_xa05p"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c74wh2v2v0rne" path="res://Art/BlueToenails.png" id="5_iv8su"]
 [ext_resource type="Theme" uid="uid://efm0upm4fq4u" path="res://themes/play_button.tres" id="6_3peod"]
 [ext_resource type="Texture2D" uid="uid://85oepub211ib" path="res://Art/RedToenails.png" id="6_nbanb"]
+[ext_resource type="Script" path="res://Scripts/QuitButton.gd" id="8_l5hhx"]
 
 [node name="root" type="Node"]
 script = ExtResource("1_xa05p")
@@ -96,7 +97,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_3peod")
 text = "Quit"
-script = ExtResource("3_cukip")
+script = ExtResource("8_l5hhx")
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
