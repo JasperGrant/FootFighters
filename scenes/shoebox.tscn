@@ -1,25 +1,82 @@
-[gd_scene load_steps=6 format=3 uid="uid://405toogifqno"]
+[gd_scene load_steps=21 format=3 uid="uid://405toogifqno"]
 
 [ext_resource type="Script" path="res://Scripts/Shoebox.cs" id="1_7gxsb"]
-[ext_resource type="Texture2D" uid="uid://dsmyer7sv5vrh" path="res://placeholder_assets/Pineapple.png" id="1_v48dj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tu541"]
-atlas = ExtResource("1_v48dj")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://dld7d2woix71e" path="res://Art/lootbox/lootbox/lootbox_0000.png" id="2_b2fiq"]
+[ext_resource type="Texture2D" uid="uid://ci5mikv0dbtw2" path="res://Art/lootbox/lootbox/lootbox_0001.png" id="3_ejv53"]
+[ext_resource type="Texture2D" uid="uid://cqaimsfeca6n4" path="res://Art/lootbox/lootbox/lootbox_0002.png" id="4_4csqh"]
+[ext_resource type="Texture2D" uid="uid://bn72p1cj08l76" path="res://Art/lootbox/lootbox/lootbox_0003.png" id="5_1vtwh"]
+[ext_resource type="Texture2D" uid="uid://mmmm3hpakg8e" path="res://Art/lootbox/lootbox/lootbox_0004.png" id="6_hfqtt"]
+[ext_resource type="Texture2D" uid="uid://cd4a4gp5nwqhb" path="res://Art/lootbox/lootbox/lootbox_0005.png" id="7_i187f"]
+[ext_resource type="Texture2D" uid="uid://dvkf3sobx3lop" path="res://Art/lootbox/lootbox/lootbox_0006.png" id="8_mviwg"]
+[ext_resource type="Texture2D" uid="uid://77q628c3cfmu" path="res://Art/lootbox/lootbox/lootbox_0007.png" id="9_n61km"]
+[ext_resource type="Texture2D" uid="uid://busr1075trc4d" path="res://Art/lootbox/lootbox/lootbox_0008.png" id="10_flekx"]
+[ext_resource type="Texture2D" uid="uid://8clyehnrl7mn" path="res://Art/lootbox/lootbox/lootbox_0009.png" id="11_yx14g"]
+[ext_resource type="Texture2D" uid="uid://baqt4r2yinhwf" path="res://Art/lootbox/lootbox/lootbox_0010.png" id="12_rj6tl"]
+[ext_resource type="Texture2D" uid="uid://dib43370fudvb" path="res://Art/lootbox/lootbox/lootbox_0011.png" id="13_03fq5"]
+[ext_resource type="Texture2D" uid="uid://bu7bdvlanhu7i" path="res://Art/lootbox/lootbox/lootbox_0012.png" id="14_vqcg1"]
+[ext_resource type="Texture2D" uid="uid://cw4ti1l7n73v7" path="res://Art/lootbox/lootbox/lootbox_0013.png" id="15_abwfh"]
+[ext_resource type="Texture2D" uid="uid://crpeh67ykqh23" path="res://Art/lootbox/lootbox/lootbox_0014.png" id="16_auicv"]
+[ext_resource type="Texture2D" uid="uid://bb7chftl73exe" path="res://Art/lootbox/lootbox/lootbox_0015.png" id="17_a6beo"]
+[ext_resource type="AudioStream" uid="uid://ckpqyovcutrnb" path="res://Sounds/PowerUp.mp3" id="18_et138"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwiyt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tu541")
+"texture": ExtResource("2_b2fiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ejv53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4csqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1vtwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hfqtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i187f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mviwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n61km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_flekx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yx14g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rj6tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_03fq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vqcg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_abwfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_auicv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_a6beo")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ypy4"]
-radius = 28.0
+radius = 36.0139
 
 [node name="shoebox" type="Area2D"]
 collision_layer = 7
@@ -28,16 +85,22 @@ script = ExtResource("1_7gxsb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3, 3)
+position = Vector2(-2, -7)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_iwiyt")
 autoplay = "default"
+frame_progress = 0.464013
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 3)
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_7ypy4")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_et138")
+volume_db = -15.0
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
 [connection signal="timeout" from="Timer" to="." method="TimeOut"]

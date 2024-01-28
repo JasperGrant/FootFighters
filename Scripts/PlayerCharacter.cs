@@ -380,7 +380,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public void giveShoe()
 	{
-		GD.Print("Shoe given");
+		
 	}
 
 
