@@ -32,7 +32,7 @@ public partial class Shoebox : Area2D
 	{
 		if(node.GetType().ToString() == "PlayerCharacter")
 		{
-			node.GetNode<PlayerCharacter>(node.GetPath()).giveShoe();
+			node.GetNode<PlayerCharacter>(node.GetPath()).PowerUp();
 		}
 		_sound.Play();
 		visible = false;

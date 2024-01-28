@@ -269,10 +269,8 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Land"
+animation = &"PowerIdle"
 autoplay = "Idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("42_dx3le")
