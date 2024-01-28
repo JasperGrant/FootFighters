@@ -100,7 +100,7 @@ public partial class GameManager : Node
 
 	public void PausedArena1()
 	{
-
+		_player1Reference.GetParent().SetPhysicsProcess(false);
 		GD.Print("Paused");
 
 	}

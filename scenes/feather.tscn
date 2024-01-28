@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://s5aky3wgxpb7"]
+[gd_scene load_steps=18 format=3 uid="uid://s5aky3wgxpb7"]
 
 [ext_resource type="Script" path="res://Scripts/Feather.cs" id="1_xqud7"]
 [ext_resource type="Texture2D" uid="uid://b4ueubbbpxgg2" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0000.png" id="2_r4qdq"]
@@ -15,9 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://d1rw7acfyd77l" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0009.png" id="12_s3uqy"]
 [ext_resource type="Texture2D" uid="uid://dx5mfdhsprfqd" path="res://Art/Featheranimate/Featheranimate/Featheranimate_0010.png" id="13_olncj"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rdxlc"]
+friction = 0.0
+bounce = 0.5
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odfk"]
-radius = 2.5
-height = 17.0
+radius = 6.0
+height = 36.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8poa"]
 animations = [{
@@ -65,17 +69,18 @@ animations = [{
 
 [node name="Feather" type="RigidBody2D"]
 collision_layer = 0
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_rdxlc")
+can_sleep = false
 script = ExtResource("1_xqud7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(0, 1)
 rotation = 1.5708
-scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_0odfk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2.2375, 0.29375)
 scale = Vector2(0.0759615, 0.0784357)
 sprite_frames = SubResource("SpriteFrames_j8poa")
 autoplay = "default"

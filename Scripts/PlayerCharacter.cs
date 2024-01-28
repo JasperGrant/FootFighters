@@ -227,11 +227,12 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (Input.IsActionJustPressed(_inputMappings.Special1) && !(_inputControlVector.X == 0 && _inputControlVector.Y == 0))
 		{
-			var _Feather = FeatherScene.Instantiate();
-			AddChild(_Feather);
+			var feather = FeatherScene.Instantiate();
+			GetParent().AddChild(feather);
 			float xvelo=0F;
 		
-			_featherRef=GetNode<Feather>(_Feather.GetPath());
+			_featherRef=GetNode<Feather>(feather.GetPath());
+			_featherRef.Transform=this.Transform;
 			//conditional prevents feathers from staying in player if stick is not pushed
 			if (_inputControlVector.X!=0 || _inputControlVector.Y!=0)
 			{
@@ -252,6 +253,10 @@ public partial class PlayerCharacter : CharacterBody2D
 				}
 			}
 			_featherRef.setVelo(xvelo,_projectileVelo*_inputControlVector.Y);
+			if ((_currentPowerState&EPowerUps.Ricochet)!=0)
+			{
+				_featherRef.MaxCollisions=3;
+			}
 
 			if(_isPlayer2)
 			{

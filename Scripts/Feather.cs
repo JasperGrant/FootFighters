@@ -12,6 +12,12 @@ public partial class Feather : RigidBody2D
 
 	private string sender;
 
+	public int MaxCollisions=4;
+	private int _currentCollisions=0;
+
+	private Timer _lifetimeTimer;
+	private double _lifetime=5.0;
+
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -21,6 +27,11 @@ public partial class Feather : RigidBody2D
 		GravityScale = 0;
 		ContactMonitor = true;
 		MaxContactsReported = 1000;
+		_lifetimeTimer = new Timer();
+		AddChild(_lifetimeTimer);
+		_lifetimeTimer.WaitTime=_lifetime;
+		_lifetimeTimer.Timeout +=DeleteSelf;
+		_lifetimeTimer.Start();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,11 +48,16 @@ public partial class Feather : RigidBody2D
 		}
 		else{
 			var _Particle = ParticleScene.Instantiate() as GpuParticles2D;
-		_Particle.GlobalPosition = this.Position;
-		_Particle.RotationDegrees = 0;
-		GetParent().AddChild(_Particle);
+			_Particle.GlobalPosition = this.Position;
+			_Particle.RotationDegrees = 0;
+			GetParent().AddChild(_Particle);
 		}
-		QueueFree();
+		_currentCollisions++;
+		if (_currentCollisions>=MaxCollisions)
+		{
+			QueueFree();
+		}
+
 	}
 
 	public void setVelo(float X, float Y)
@@ -52,6 +68,10 @@ public partial class Feather : RigidBody2D
 		GlobalRotation = velocity.Angle();
 	}
 
+	private void DeleteSelf()
+	{
+		QueueFree();
+	}
 
 
 }
