@@ -196,52 +196,6 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 		_arrow.Rotation = _inputControlVector.Angle();
 
-		/*
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		var direction = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-		//GD.Print(direction.ToString());
-		if (direction!=0F)
-		{
-			_localVelocity.X = direction * SPEED;
-
-			var newSpriteScale = _sprite2D.Scale;
-			var newColliderScale = _collisionShape2D.Scale;
-			//allows shinking the character if stick is not fully pushed
-			if(Input.IsActionJustPressed(_inputMappings.Special1))
-			{
-				newSpriteScale.X = direction*_baseSpriteScale;
-				newColliderScale.X = direction*_baseColliderScale;
-			}
-			else
-			{
-			//allows shinking the character if stick is not fully pushed
-				newSpriteScale.X = (direction>0 ? 1:-1)*_baseSpriteScale;
-				newColliderScale.X = (direction>0 ? 1:-1)*_baseColliderScale;
-
-			}
-
-			_sprite2D.Scale = newSpriteScale;
-			_collisionShape2D.Scale=newColliderScale;
-			//_sprite2D.FlipH = direction<0;
-			//GD.Print(Scale.X);
-			if (IsOnFloor()){
-				//_sprite2D.Play("run");
-			}
-		}
-		else
-		{
-			// This handles the character slowing to a stop
-			_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 5*SPEED*(float)delta);
-
-			if (IsOnFloor()){
-				_sprite2D.Play("default");
-			}
-		}
-
-		*/
-
-
 		if (Input.IsActionJustPressed(_inputMappings.Special1) && !(_inputControlVector.X == 0 && _inputControlVector.Y == 0))
 		{
 			var _Feather = FeatherScene.Instantiate();
