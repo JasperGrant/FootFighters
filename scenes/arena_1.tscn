@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=12 format=3 uid="uid://dlh72gx6fdxe1"]
 
 [ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
 [ext_resource type="Script" path="res://Scripts/MultiplayerCam.gd" id="4_67anf"]
-[ext_resource type="Theme" uid="uid://beyqivaso7d56" path="res://themes/laugh_bar.tres" id="5_4ci76"]
+[ext_resource type="Theme" uid="uid://ddxoc4ahkadev" path="res://themes/laugh_bar_P1.tres" id="5_51ky1"]
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
-[ext_resource type="Texture2D" uid="uid://dddpkn5kvxxtg" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="Theme" uid="uid://cl1xnf3fb7un1" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
+[ext_resource type="Texture2D" uid="uid://dknehyw2lxqt3" path="res://Laugh.png" id="6_tpg8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -637,7 +638,7 @@ offset_top = -17.0
 offset_right = 437.0
 offset_bottom = 17.0
 grow_vertical = 2
-theme = ExtResource("5_4ci76")
+theme = ExtResource("5_51ky1")
 max_value = 5.0
 step = 1.0
 show_percentage = false
@@ -656,7 +657,7 @@ offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
 rotation = -3.14159
-theme = ExtResource("5_4ci76")
+theme = ExtResource("6_q0brl")
 max_value = 5.0
 step = 1.0
 show_percentage = false
@@ -668,7 +669,7 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -13.0
 offset_top = -47.0
-offset_right = 87.0
+offset_right = 121.0
 offset_bottom = 44.0
 grow_vertical = 2
 texture = ExtResource("6_tpg8f")
@@ -681,10 +682,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -40.0
-offset_right = 6.0
-offset_bottom = 44.0
+offset_left = -94.0
+offset_top = -41.0
+offset_right = 19.0
+offset_bottom = 43.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_tpg8f")
