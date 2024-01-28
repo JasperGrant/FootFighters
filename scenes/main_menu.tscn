@@ -65,7 +65,7 @@ offset_right = 471.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_kpnsr")
+texture = ExtResource("5_cx6n1")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
