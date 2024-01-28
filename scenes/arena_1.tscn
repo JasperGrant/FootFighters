@@ -607,6 +607,7 @@ z_index = -20
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
+scale = Vector2(0.998842, 1)
 texture = ExtResource("1_p33j4")
 stretch_mode = 1
 
@@ -714,7 +715,7 @@ unique_name_in_owner = true
 script = ExtResource("4_67anf")
 
 [node name="shoebox" parent="." instance=ExtResource("10_mwfjn")]
-position = Vector2(908, 375)
+position = Vector2(912, 378)
 
 [node name="BlueBG" type="TextureRect" parent="."]
 visible = false
