@@ -79,8 +79,8 @@ animations = [{
 radius = 36.0139
 
 [node name="shoebox" type="Area2D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_7gxsb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -100,7 +100,7 @@ autostart = true
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_et138")
-volume_db = -15.0
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
 [connection signal="timeout" from="Timer" to="." method="TimeOut"]

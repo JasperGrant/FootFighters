@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdq3t2uuhfx0x"]
+[gd_scene load_steps=5 format=3 uid="uid://d4jwjaacgpjxb"]
 
 [ext_resource type="PackedScene" uid="uid://deg34xi1lc36x" path="res://scenes/main_menu.tscn" id="1_p27ke"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_n8wqg"]
+[ext_resource type="AudioStream" uid="uid://bymua6vygnl7c" path="res://Music/Intro.mp3" id="3_e8gt5"]
+[ext_resource type="AudioStream" uid="uid://b75qbc3ehik78" path="res://Music/Loo.mp3" id="4_r4oxp"]
 
 [node name="BaseNode" type="Node"]
 
@@ -9,3 +11,13 @@
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_n8wqg")
+
+[node name="IntroMusic" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("3_e8gt5")
+autoplay = true
+
+[node name="LoopMusic" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("4_r4oxp")
+
+[connection signal="finished" from="GameManager/IntroMusic" to="GameManager" method="LoopMusic"]
+[connection signal="finished" from="GameManager/LoopMusic" to="GameManager" method="LoopMusic"]
