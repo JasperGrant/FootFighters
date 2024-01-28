@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 
@@ -84,8 +85,10 @@ public partial class PlayerCharacter : CharacterBody2D
 	private int _allowedJumpAmount = 2;
 	private int _currentJumps = 0;
 
-	private float _flatProjectileVelo = 500.0F;
-	private float _factorProjectileVelo = 500.0F; 
+	private float _flatProjectileVelo = 900.0F; 
+	private float _factorProjectileVelo = 900.0F; 
+
+	private float _projectileVelo = 900.0F;
 
 	private Feather _featherRef;
 
@@ -150,9 +153,12 @@ public partial class PlayerCharacter : CharacterBody2D
 		//get vector of input control direction
 		var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
 		var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+
+		float scale_needed_for_unit_mag = MathF.Sqrt(xdirection*xdirection+ydirection*ydirection);
+		xdirection = xdirection/scale_needed_for_unit_mag;
+		ydirection = ydirection/scale_needed_for_unit_mag;
 		_inputControlVector.X=xdirection;
 		_inputControlVector.Y=ydirection;
-
 		/*
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -201,14 +207,16 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (Input.IsActionJustPressed(_inputMappings.Special1))
 		{
-			var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
-			var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+			// var x_shoot = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
+			// var y_shoot = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
+
 
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			_featherRef.setVelo(_flatProjectileVelo+x_shoot*_factorProjectileVelo,_flatProjectileVelo+y_shoot*_factorProjectileVelo);
+			
+			_featherRef.setVelo(_projectileVelo*_inputControlVector.X,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
 			{
