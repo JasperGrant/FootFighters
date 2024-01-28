@@ -44,7 +44,7 @@ public partial class Feather : RigidBody2D
 		if(node.GetType().ToString() == "PlayerCharacter")
 		{
 			node.GetNode<PlayerCharacter>(node.GetPath()).decrement_health(1);
-			
+			QueueFree();
 		}
 		else{
 			var _Particle = ParticleScene.Instantiate() as GpuParticles2D;

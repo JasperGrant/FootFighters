@@ -11,29 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://bepgprr27xl7a" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0037.png" id="9_k0hq7"]
 [ext_resource type="Texture2D" uid="uid://bmxut5k6t4lmk" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0038.png" id="10_s4vmb"]
 [ext_resource type="Texture2D" uid="uid://ltylxy1ap307" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0039.png" id="11_4savy"]
-[ext_resource type="Texture2D" uid="uid://datn85f2jlcwc" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0000.png" id="12_hmfhk"]
 [ext_resource type="Texture2D" uid="uid://dmj2ujbbrjflr" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0001.png" id="12_x2pwe"]
 [ext_resource type="Texture2D" uid="uid://b68831vemh6us" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0002.png" id="13_3vgd3"]
-[ext_resource type="Texture2D" uid="uid://bumpcqel0yqo8" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0006.png" id="13_f0hvh"]
 [ext_resource type="Texture2D" uid="uid://dorb6djagwegu" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0003.png" id="14_mpkk7"]
-[ext_resource type="Texture2D" uid="uid://ch1y0hjl0iuml" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0007.png" id="14_u78at"]
-[ext_resource type="Texture2D" uid="uid://b1c5ggdo5g713" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0008.png" id="15_2acto"]
 [ext_resource type="Texture2D" uid="uid://ckvktkdtej6d5" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0004.png" id="15_xdywu"]
-[ext_resource type="Texture2D" uid="uid://di54e3wmgm5f6" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0009.png" id="16_hmeq2"]
 [ext_resource type="Texture2D" uid="uid://bvsqokn1dwdhd" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0005.png" id="16_lpa4a"]
 [ext_resource type="Texture2D" uid="uid://css7aryfsppfq" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0006.png" id="17_33yqk"]
-[ext_resource type="Texture2D" uid="uid://dm7hy8hvgbr5e" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0010.png" id="17_srpy7"]
 [ext_resource type="Texture2D" uid="uid://b2vl785c21acg" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0007.png" id="18_du6t7"]
-[ext_resource type="Texture2D" uid="uid://bk1mfwsboi7ra" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0011.png" id="18_xvnk8"]
 [ext_resource type="Texture2D" uid="uid://be3lo6n4d8atj" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0008.png" id="19_0yhq2"]
-[ext_resource type="Texture2D" uid="uid://ja60hlwfv0tk" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0001.png" id="19_7nk18"]
-[ext_resource type="Texture2D" uid="uid://se4vxqca41nd" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0002.png" id="20_m2v31"]
 [ext_resource type="Texture2D" uid="uid://cb450l4axc6fv" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0009.png" id="20_p4l0y"]
 [ext_resource type="Texture2D" uid="uid://dujebvdt7mhkj" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0010.png" id="21_3vcnj"]
-[ext_resource type="Texture2D" uid="uid://b78kxu4kave2o" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0003.png" id="21_5b1r0"]
 [ext_resource type="Texture2D" uid="uid://dw3va5efxklsl" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0011.png" id="22_2ja3i"]
-[ext_resource type="Texture2D" uid="uid://bdwfv7buohpt8" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0004.png" id="22_n5slk"]
-[ext_resource type="Texture2D" uid="uid://bd7pmkx57ipcv" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0005.png" id="23_1ahoh"]
 [ext_resource type="Texture2D" uid="uid://bb8qbpkgl06lu" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0012.png" id="23_fnoy4"]
 [ext_resource type="Texture2D" uid="uid://bglbwkwrg3uon" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0013.png" id="24_6dcvw"]
 [ext_resource type="Texture2D" uid="uid://bxacia5myqo8y" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0014.png" id="25_yx8rd"]
@@ -216,7 +204,7 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Idle"
+animation = &"Spring"
 autoplay = "Idle"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
