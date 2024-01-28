@@ -337,7 +337,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 
-				GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
+				//GD.Print($"Hop X: {_localVelocity.X}, Hop Y: {_localVelocity.Y}");
 
 				// var newScale = _sprite2D.Scale;
 				// //allows shinking the character if stick is not fully pushed

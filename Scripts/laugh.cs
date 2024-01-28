@@ -13,6 +13,8 @@ public partial class laugh : Node
 
 	private Button _playAgainButton;
 
+	private Timer _playAgainTimer;
+
 	public void gameOver(bool blueLost)
 	{
 		GD.Print("In Game Over");
@@ -38,9 +40,11 @@ public partial class laugh : Node
 		_red = GetNode<TextureRect>("Red");
 		_blueFoot = GetNode<TextureRect>("BlueToenails");
 		_redFoot = GetNode<TextureRect>("RedToenails");
-
-		_playAgainButton = GetNode<Button>("FinishButton");
-		_playAgainButton.GrabFocus();
+		_playAgainTimer = new Timer();
+		AddChild(_playAgainTimer);
+		_playAgainTimer.WaitTime=2;
+		_playAgainTimer.Timeout +=GrabResume;
+		_playAgainTimer.Start();
 		GD.Print("Ready done");
 
 	}
@@ -49,4 +53,12 @@ public partial class laugh : Node
 	public override void _Process(double delta)
 	{
 	}
+
+	private void GrabResume()
+	{
+		_playAgainButton = GetNode<Button>("FinishButton");
+		_playAgainButton.GrabFocus();
+	}
+
+
 }

@@ -96,6 +96,7 @@ position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_7ypy4")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]

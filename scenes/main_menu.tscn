@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_xa05p"]
 [ext_resource type="Texture2D" uid="uid://doalhmefpg3ql" path="res://Art/Backgrounds/yellow.png" id="2_rx54s"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
-[ext_resource type="Texture2D" uid="uid://d3u2b7twryao6" path="res://Art/FootFighter-1-28-2024.png" id="5_cx6n1"]
+[ext_resource type="Texture2D" uid="uid://wamhl05olvgr" path="res://Art/FootFighters-1-28-2024.png" id="5_6wgno"]
 [ext_resource type="Texture2D" uid="uid://b8j0okf4up1f0" path="res://Art/BlueToenails.png" id="5_iv8su"]
 [ext_resource type="Theme" uid="uid://efm0upm4fq4u" path="res://themes/play_button.tres" id="6_3peod"]
 [ext_resource type="Texture2D" uid="uid://byqlyhjtg7ikm" path="res://Art/RedToenails.png" id="6_nbanb"]
@@ -65,7 +65,7 @@ offset_right = 471.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_cx6n1")
+texture = ExtResource("5_6wgno")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
