@@ -9,7 +9,7 @@ In a dark future feet must battle for their very right to be untickled...
 
 Join us in Foot Fighters, a tickle' em up 1V1 platformer taking inspiration from fast paced classics like Stick Fight and Spelunky.
 
-Our unique hopping control scheme ensures hours of fun. Just point with the R Stick and press A to hop or B to feather.
+Our unique hopping control scheme ensures hours of fun. Just point with the L Stick and press A to hop or B to feather.
 
 Featuring wacky powerups that change the whole game. Find them in shoeboxes scattered around the map.
 
