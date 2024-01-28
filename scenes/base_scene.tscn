@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://deg34xi1lc36x" path="res://scenes/main_menu.tscn" id="1_p27ke"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_n8wqg"]
-[ext_resource type="AudioStream" uid="uid://cgg8u2afm4ms8" path="res://Music/Intro.mp3" id="3_e8gt5"]
-[ext_resource type="AudioStream" uid="uid://cgbqt6yak3vhk" path="res://Music/Loo.mp3" id="4_r4oxp"]
+[ext_resource type="AudioStream" uid="uid://cfu1g0uodbr41" path="res://Music/Intro.mp3" id="3_e8gt5"]
+[ext_resource type="AudioStream" uid="uid://b5e15y57jbbvd" path="res://Music/Loo.mp3" id="4_r4oxp"]
 
 [node name="BaseNode" type="Node"]
 
