@@ -707,6 +707,8 @@ offset_bottom = 105.0
 grow_horizontal = 2
 texture = ExtResource("6_bk6n0")
 
+[node name="Pause Menu" parent="UI" instance=ExtResource("9_1hmiu")]
+
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_67anf")

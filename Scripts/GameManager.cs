@@ -1,9 +1,7 @@
 using Godot;
-using System;
 
 public partial class GameManager : Node
 {
-
 	private bool _debugPrintCycleFlag = false;
 	private string _pauseKey = "Pause";
 
@@ -23,6 +21,8 @@ public partial class GameManager : Node
 	//These references are only valid while in arena
 	private PlayerCharacter _player1Reference;
 	private PlayerCharacter _player2Reference;
+	
+	private pause_menu pause;
 
 	private AudioStreamPlayer _introMusic;
 	private AudioStreamPlayer _loopMusic;
@@ -38,6 +38,7 @@ public partial class GameManager : Node
 		_introMusic = GetNode<AudioStreamPlayer>("IntroMusic");
 		_loopMusic = GetNode<AudioStreamPlayer>("LoopMusic");
 		GD.Print("GM is online");
+		pause = GetNode<pause_menu>("/root/BaseNode/Arena 1/Pause Menu");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -101,7 +102,10 @@ public partial class GameManager : Node
 	public void PausedArena1()
 	{
 
-		GD.Print("Paused");
+		var pause = GetNode("/root/BaseNode/Arena 1/UI/Pause Menu") as pause_menu;
+		pause.toggle_paused();
+
+		
 
 	}
 
