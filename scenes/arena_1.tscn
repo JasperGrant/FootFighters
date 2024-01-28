@@ -1,20 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlh72gx6fdxe1"]
+[gd_scene load_steps=25 format=3 uid="uid://dlh72gx6fdxe1"]
 
 [ext_resource type="Script" path="res://Scripts/Arena_1.cs" id="1_2mwp6"]
-[ext_resource type="Texture2D" uid="uid://c16vitt1cs0ks" path="res://Art/Backgrounds/red.png" id="1_p33j4"]
+[ext_resource type="Texture2D" uid="uid://klso74l88qx5" path="res://Art/Backgrounds/red.png" id="1_p33j4"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
 [ext_resource type="Script" path="res://Scripts/MultiplayerCam.gd" id="4_67anf"]
 [ext_resource type="Theme" uid="uid://ddxoc4ahkadev" path="res://themes/laugh_bar_P1.tres" id="5_51ky1"]
-[ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
+[ext_resource type="Texture2D" uid="uid://bpa20u0hjddyi" path="res://Art/GO-1-28-2024.png" id="6_1552r"]
 [ext_resource type="Theme" uid="uid://cl1xnf3fb7un1" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
-[ext_resource type="Texture2D" uid="uid://b11cuddm8i10f" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="Texture2D" uid="uid://dddpkn5kvxxtg" path="res://Laugh.png" id="6_tpg8f"]
+[ext_resource type="Texture2D" uid="uid://cpb6w1micsne3" path="res://Art/FootFighter-1-28-2024.png" id="9_jk61f"]
 [ext_resource type="PackedScene" uid="uid://405toogifqno" path="res://scenes/shoebox.tscn" id="10_mwfjn"]
-[ext_resource type="Texture2D" uid="uid://d223kjujfhqha" path="res://Art/Backgrounds/blue.png" id="11_vfn7l"]
-[ext_resource type="Texture2D" uid="uid://cv2nim0vgkjur" path="res://Art/Backgrounds/yellow.png" id="12_38dgd"]
-[ext_resource type="Texture2D" uid="uid://cp7u6nmirx71b" path="res://Art/Backgrounds/green.png" id="12_wb4nt"]
-[ext_resource type="Texture2D" uid="uid://bl6yacbi3m0qt" path="res://Art/Backgrounds/purple.png" id="13_xwmq6"]
+[ext_resource type="Texture2D" uid="uid://cdopx24wdhiks" path="res://Art/Backgrounds/blue.png" id="11_vfn7l"]
+[ext_resource type="Texture2D" uid="uid://df5wo5c7bk6r2" path="res://Art/3-1-28-2024.png" id="12_36o1b"]
+[ext_resource type="Texture2D" uid="uid://bfajkw7so5gn6" path="res://Art/Backgrounds/yellow.png" id="12_38dgd"]
+[ext_resource type="Texture2D" uid="uid://bjtwcls2dlpkg" path="res://Art/Backgrounds/green.png" id="12_wb4nt"]
+[ext_resource type="Texture2D" uid="uid://bg82yfaqgvgtk" path="res://Art/2-1-28-2024.png" id="13_0pvlj"]
+[ext_resource type="Texture2D" uid="uid://dfxxgll5ihr4c" path="res://Art/Backgrounds/purple.png" id="13_xwmq6"]
+[ext_resource type="Texture2D" uid="uid://bfsxb2vqfwftv" path="res://Art/1-1-28-2024.png" id="14_ppahx"]
+[ext_resource type="Texture2D" uid="uid://cp4mney4wqq3r" path="res://Art/HD_transparent_picture.png" id="15_rmguk"]
 [ext_resource type="PackedScene" uid="uid://c67xjs6jbjwm5" path="res://scenes/pause_menu.tscn" id="16_kpklu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
@@ -600,6 +605,29 @@ texture = ExtResource("2_mv47y")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_30h5m")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cfyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_36o1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0pvlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ppahx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1552r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rmguk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Arena 1" type="Node"]
 script = ExtResource("1_2mwp6")
 
@@ -705,20 +733,32 @@ expand_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -322.5
-offset_right = 322.5
-offset_bottom = 105.0
+offset_left = -313.0
+offset_top = -16.0
+offset_right = 319.0
+offset_bottom = 115.0
 grow_horizontal = 2
-texture = ExtResource("6_bk6n0")
+texture = ExtResource("9_jk61f")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Pause Menu" parent="UI" instance=ExtResource("16_kpklu")]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(933, 360)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_2cfyb")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
 
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_67anf")
 
 [node name="shoebox" parent="." instance=ExtResource("10_mwfjn")]
-position = Vector2(912, 378)
+position = Vector2(434, 819)
 
 [node name="BlueBG" type="TextureRect" parent="."]
 visible = false
@@ -755,3 +795,15 @@ offset_right = 2091.0
 offset_bottom = 1229.0
 texture = ExtResource("13_xwmq6")
 stretch_mode = 1
+
+[node name="shoebox2" parent="." instance=ExtResource("10_mwfjn")]
+position = Vector2(1867, 91)
+
+[node name="shoebox3" parent="." instance=ExtResource("10_mwfjn")]
+position = Vector2(208, 140)
+
+[node name="shoebox4" parent="." instance=ExtResource("10_mwfjn")]
+position = Vector2(1896, 1039)
+
+[node name="shoebox5" parent="." instance=ExtResource("10_mwfjn")]
+position = Vector2(1080, 152)
