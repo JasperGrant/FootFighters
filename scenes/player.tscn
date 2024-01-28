@@ -259,6 +259,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 9
 script = ExtResource("1_ofsnx")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -281,7 +282,16 @@ stream = ExtResource("43_lhh5v")
 volume_db = -20.0
 
 [node name="Arrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(7.62939e-06, 2.38419e-07)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("44_ttndk")
 offset = Vector2(1750, 0)
+
+[node name="PowerTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="IFrameTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PowerTimer" to="." method="PowerDown"]

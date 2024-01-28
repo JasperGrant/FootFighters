@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cl1xnf3fb7un1"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://gc7m2230nfeq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krjxp"]
 border_width_left = 5
@@ -8,7 +8,7 @@ border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3sh0"]
-bg_color = Color(0.0431373, 0.113725, 0.854902, 1)
+bg_color = Color(0, 0, 1, 1)
 border_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 5
 corner_radius_top_right = 5

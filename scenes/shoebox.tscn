@@ -79,8 +79,8 @@ animations = [{
 radius = 36.0139
 
 [node name="shoebox" type="Area2D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_7gxsb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

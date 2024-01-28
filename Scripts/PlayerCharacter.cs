@@ -88,6 +88,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private AudioStreamPlayer _jumpsound;
 	private AudioStreamPlayer _ticklesound;
 
+	private Timer _powerTimer;
+	private Timer _iFrameTimer;
 
 	public ProgressBar _player_health_label;
 
@@ -138,6 +140,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
 
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
+		_powerTimer = GetNode<Timer>("PowerTimer");
+		_iFrameTimer = GetNode<Timer>("IFrameTimer");
 
 		if(_nodePath.IndexOf("Player2")!=-1)
 		{
@@ -409,22 +413,23 @@ public partial class PlayerCharacter : CharacterBody2D
 	public void PowerUp()
 	{
 		hasPower = true;
-		_sprite2D.Play("PowerSpring");
+		_sprite2D.Play("PowerLand");
 		_sprite2D.Scale  = _powerScale;
 		_sprite2D.Position = _powerPosition;
 
 		_currentPowerState|=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
 
 
+		_powerTimer.Start();
 	}
 	public void PowerDown()
 	{
 		hasPower = false;
-		_sprite2D.Play("Jump");
-		_sprite2D.ApplyScale(_nopowerScale);
+		_sprite2D.Play("Land");
+		_sprite2D.Scale = _nopowerScale;
 		_sprite2D.Position = _nopowerPosition;
 		_currentPowerState=EPowerUps.None;
-
+		_powerTimer.Stop();
 	}
 
 
