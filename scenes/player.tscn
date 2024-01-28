@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://dga7ad23w4667" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0029.png" id="40_fjof7"]
 [ext_resource type="Texture2D" uid="uid://b14pmk8fff2we" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0030.png" id="41_on176"]
 [ext_resource type="AudioStream" uid="uid://bujvk1vb5jmkq" path="res://Sounds/Jump.mp3" id="42_dx3le"]
-[ext_resource type="AudioStream" uid="uid://bfpcbh4t1w6ca" path="res://Sounds/Tickle.mp3" id="43_lhh5v"]
+[ext_resource type="AudioStream" uid="uid://uxwpdutlpkf5" path="res://Sounds/Tickle.mp3" id="43_lhh5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5psfv"]
 size = Vector2(46, 32)

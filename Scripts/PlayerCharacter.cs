@@ -81,7 +81,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private AudioStreamPlayer _ticklesound;
 
 
-	public Label _player_health_label;
+	public ProgressBar _player_health_label;
 
 	private int _health = 5;
 	private int _allowedJumpAmount = 2;
@@ -115,17 +115,18 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (_isPlayer2)
 		{
-			_player_health_label = GetNode<Label>("../UI/Health_Bars/P2_Health");
+			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P2_Health_Bar");
 		}
 		else{
-			_player_health_label = GetNode<Label>("../UI/Health_Bars/P1_Health");
+			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P1_Health_Bar");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
 	}
 
 	public override void _Process(double delta)
 	{
-		_player_health_label.Text = _health.ToString();
+		// Magic number to make bars og up instead of down
+		_player_health_label.Value = (5 - _health);
 		if(_health < 1){
 			//GetNode<Label>("Winner").Text = _isPlayer2 ? "Player 1 wins!" : "Player 2 wins!";
 			var next_scene=_laughScene.Instantiate();
@@ -207,7 +208,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		*/
 
-
+		//Fire a feather
 		if (Input.IsActionJustPressed(_inputMappings.Special1))
 		{
 			var _Feather = FeatherScene.Instantiate();
@@ -215,8 +216,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
 			//conditional prevents feathers from staying in player
-			//future add would be 1 or -1 depending on direction player is facing
-			_featherRef.setVelo((_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:1,_projectileVelo*_inputControlVector.Y);
+			float xvelo=(_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:(_sprite2D.FlipH)?_projectileVelo*-1:_projectileVelo;
+			_featherRef.setVelo(xvelo,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
 			{
@@ -250,7 +251,7 @@ public partial class PlayerCharacter : CharacterBody2D
 					//allow a sort of dash in air
 					if (!IsOnFloor())
 					{
-						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER*3;
+						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH * 5;
 						_localVelocity.Y = 0; 
 
 					}
@@ -292,7 +293,6 @@ public partial class PlayerCharacter : CharacterBody2D
 				// newScale.X = xdirection*_baseScale;
 				// _sprite2D.Scale = newScale;
 				// _collisionShape2D.Scale=newScale;
-				//_sprite2D.FlipH = direction<0;
 				//GD.Print(Scale.X);
 				if (IsOnFloor()){
 					//_sprite2D.Play("run");
@@ -311,14 +311,23 @@ public partial class PlayerCharacter : CharacterBody2D
 			else
 			{
 				//allow some movement in air
-
-				_localVelocity.X = _inputControlVector.X * SPEED * 0.8F;
+				
+				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
+				//this line is jet mode (acceleration in X)
+				//_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
 			}
 		}
 
+		if (_inputControlVector.X!=0)
+		{
+			_sprite2D.FlipH = _inputControlVector.X<0;
+		}
+
 		Velocity=_localVelocity;
+
+
 		
-		//GD.Print(Velocity.ToString());
+		GD.Print(Velocity.ToString());
 	
 		MoveAndSlide();
 
