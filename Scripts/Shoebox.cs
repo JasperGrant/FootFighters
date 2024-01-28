@@ -19,7 +19,14 @@ public partial class Shoebox : Area2D
 		_collider= GetNode<CollisionShape2D>("Collider");
 		_sound = GetNode<AudioStreamPlayer>("Sound");
 		_sprite.Visible = false;
+		SetCollisionLayerValue(1,false);
+		SetCollisionMaskValue(1,false);
+		SetCollisionLayerValue(2,false);
+		SetCollisionMaskValue(2,false);
+		SetCollisionLayerValue(3,false);
+		SetCollisionMaskValue(3,false);
 		SetCollisionLayerValue(4,false);
+		SetCollisionMaskValue(4,false);	
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,8 +44,15 @@ public partial class Shoebox : Area2D
 		_sound.Play();
 		visible = false;
 		_sprite.Visible = false;
-		SetCollisionLayerValue(4,false);		
-	}
+		SetCollisionLayerValue(1,false);
+		SetCollisionMaskValue(1,false);
+		SetCollisionLayerValue(2,false);
+		SetCollisionMaskValue(2,false);
+		SetCollisionLayerValue(3,false);
+		SetCollisionMaskValue(3,false);
+		SetCollisionLayerValue(4,false);
+		SetCollisionMaskValue(4,false);	
+		}
 
 	public void TimeOut()
 	{
@@ -46,7 +60,14 @@ public partial class Shoebox : Area2D
 		{
 			visible = true;
 			_sprite.Visible = true;
+			SetCollisionLayerValue(1,true);
+			SetCollisionMaskValue(1,true);
+			SetCollisionLayerValue(2,true);
+			SetCollisionMaskValue(2,true);
+			SetCollisionLayerValue(3,true);
+			SetCollisionMaskValue(3,true);
 			SetCollisionLayerValue(4,true);
+			SetCollisionMaskValue(4,true);
 		}
 	}
 	

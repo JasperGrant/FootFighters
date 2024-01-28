@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Godot;
 
@@ -87,6 +88,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private AudioStreamPlayer _jumpsound;
 	private AudioStreamPlayer _ticklesound;
 
+	private Timer _powerTimer;
+	private Timer _iFrameTimer;
 
 	public ProgressBar _player_health_label;
 
@@ -101,9 +104,12 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private Feather _featherRef;
 
+
+	private static Random _rnd = new Random();
+
+
 	//enum to identify power ups, set as flags to allow multiple to be active
-	[Flags]
-	public enum EPowerUps
+	[Flags] public enum EPowerUps
 	{
 		None = 0,
 		XAccel = 1<<0,
@@ -111,7 +117,9 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	}
 
-	
+	private List<EPowerUps> _powerUpOptions= new();
+
+	private EPowerUps _currentPowerState=EPowerUps.None;
 
 
 
@@ -132,6 +140,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
 
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
+		_powerTimer = GetNode<Timer>("PowerTimer");
+		_iFrameTimer = GetNode<Timer>("IFrameTimer");
 
 		if(_nodePath.IndexOf("Player2")!=-1)
 		{
@@ -148,6 +158,19 @@ public partial class PlayerCharacter : CharacterBody2D
 			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P1_Health_Bar");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
+
+		//populate available powerups
+		foreach(EPowerUps powerup in Enum.GetValues(typeof(EPowerUps)))
+		{
+			if (powerup!=EPowerUps.None)
+			{
+				_powerUpOptions.Add(powerup);
+			}
+
+		}
+
+
+
 	}
 
 	public override void _Process(double delta)
@@ -329,10 +352,17 @@ public partial class PlayerCharacter : CharacterBody2D
 			else
 			{
 				//allow some movement in air
-				
-				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
-				//this line is jet mode (acceleration in X)
-				//_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
+				if((_currentPowerState & EPowerUps.XAccel)!=0)
+				{
+					//this line is jet mode (acceleration in X)
+					_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
+				}
+				else
+				{
+					_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
+				}
+
+
 			}
 		}
 
@@ -391,17 +421,23 @@ public partial class PlayerCharacter : CharacterBody2D
 	public void PowerUp()
 	{
 		hasPower = true;
-		_sprite2D.Play("PowerSpring");
+		_sprite2D.Play("PowerLand");
 		_sprite2D.Scale  = _powerScale;
 		_sprite2D.Position = _powerPosition;
+
+		_currentPowerState|=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
+		//_currentPowerState=EPowerUps.XAccel;
+		GD.Print($"New Power Up {_currentPowerState}");
+		_powerTimer.Start();
 	}
 	public void PowerDown()
 	{
 		hasPower = false;
-		_sprite2D.Play("Jump");
-		_sprite2D.ApplyScale(_nopowerScale);
+		_sprite2D.Play("Land");
+		_sprite2D.Scale = _nopowerScale;
 		_sprite2D.Position = _nopowerPosition;
-
+		_currentPowerState=EPowerUps.None;
+		_powerTimer.Stop();
 	}
 
 

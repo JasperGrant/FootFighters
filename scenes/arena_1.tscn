@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dlh72gx6fdxe1"]
 
-[ext_resource type="Texture2D" uid="uid://drdxbilb0mb6m" path="res://placeholder_assets/Blue.png" id="1_dc6gh"]
+[ext_resource type="Texture2D" uid="uid://bqs1ucs6fkd0k" path="res://Art/grayscaleBG.png" id="1_vtopq"]
 [ext_resource type="Texture2D" uid="uid://dnap5sa80hog4" path="res://placeholder_assets/Terrain (16x16).png" id="2_mv47y"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="3_06nv1"]
 [ext_resource type="PackedScene" uid="uid://be1sxce1ynfbr" path="res://scenes/player.tscn" id="3_vehsr"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="6_bk6n0"]
 [ext_resource type="Theme" uid="uid://cl1xnf3fb7un1" path="res://themes/laugh_bar_P2.tres" id="6_q0brl"]
 [ext_resource type="Texture2D" uid="uid://dknehyw2lxqt3" path="res://Laugh.png" id="6_tpg8f"]
-[ext_resource type="PackedScene" uid="uid://c67xjs6jbjwm5" path="res://scenes/pause_menu.tscn" id="10_5j88t"]
+[ext_resource type="PackedScene" uid="uid://c67xjs6jbjwm5" path="res://scenes/pause_menu.tscn" id="9_1hmiu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30h5m"]
 texture = ExtResource("2_mv47y")
@@ -600,7 +600,7 @@ sources/0 = SubResource("TileSetAtlasSource_30h5m")
 texture_filter = 1
 offset_right = 2091.0
 offset_bottom = 1229.0
-texture = ExtResource("1_dc6gh")
+texture = ExtResource("1_vtopq")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -614,12 +614,12 @@ script = ExtResource("3_06nv1")
 [node name="Player1" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(952, 617)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 
 [node name="Player2" parent="." instance=ExtResource("3_vehsr")]
 position = Vector2(1257, 617)
-collision_layer = 4
-collision_mask = 7
+collision_layer = 12
+collision_mask = 15
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -669,8 +669,8 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -13.0
-offset_top = -54.0
-offset_right = 127.0
+offset_top = -47.0
+offset_right = 121.0
 offset_bottom = 44.0
 grow_vertical = 2
 texture = ExtResource("6_tpg8f")
@@ -683,10 +683,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -53.0
-offset_right = 21.0
-offset_bottom = 39.0
+offset_left = -94.0
+offset_top = -41.0
+offset_right = 19.0
+offset_bottom = 43.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_tpg8f")
@@ -702,7 +702,7 @@ offset_bottom = 105.0
 grow_horizontal = 2
 texture = ExtResource("6_bk6n0")
 
-[node name="Pause Menu" parent="UI" instance=ExtResource("10_5j88t")]
+[node name="Pause Menu" parent="UI" instance=ExtResource("9_1hmiu")]
 
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true

@@ -24,12 +24,19 @@ public partial class GameManager : Node
 	
 	private pause_menu pause;
 
+	private AudioStreamPlayer _introMusic;
+	private AudioStreamPlayer _loopMusic;
+
+	public int WinnerNumber = 0;
+
 	private Timer _countdownTimer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		CurrentGameState=EGameState.Startup;
+		_introMusic = GetNode<AudioStreamPlayer>("IntroMusic");
+		_loopMusic = GetNode<AudioStreamPlayer>("LoopMusic");
 		GD.Print("GM is online");
 		pause = GetNode<pause_menu>("/root/BaseNode/Arena 1/Pause Menu");
 	}
@@ -102,6 +109,8 @@ public partial class GameManager : Node
 
 	}
 
-
-
+	public void LoopMusic()
+	{
+		_loopMusic.Play();
+	}
 }

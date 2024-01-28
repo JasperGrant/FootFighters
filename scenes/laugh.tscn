@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmulnnbah3r1u"]
 
 [ext_resource type="Script" path="res://scenes/laugh.gd" id="1_cteui"]
-[ext_resource type="Texture2D" uid="uid://beclvnxxvc36r" path="res://Background.png" id="1_kkam0"]
 [ext_resource type="Texture2D" uid="uid://2dxd7a783c4c" path="res://YouLaughYouLose.png" id="2_2udk7"]
+[ext_resource type="Texture2D" uid="uid://bqs1ucs6fkd0k" path="res://Art/grayscaleBG.png" id="2_btpyr"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_ccdsp"]
 
 [node name="laugh_root" type="Node"]
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_kkam0")
+texture = ExtResource("2_btpyr")
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
