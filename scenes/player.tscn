@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://be1sxce1ynfbr"]
+[gd_scene load_steps=59 format=3 uid="uid://be1sxce1ynfbr"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="1_ofsnx"]
 [ext_resource type="Texture2D" uid="uid://ba00obwrg1man" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0000.png" id="2_vd1x8"]
@@ -11,12 +11,18 @@
 [ext_resource type="Texture2D" uid="uid://bepgprr27xl7a" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0037.png" id="9_k0hq7"]
 [ext_resource type="Texture2D" uid="uid://bmxut5k6t4lmk" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0038.png" id="10_s4vmb"]
 [ext_resource type="Texture2D" uid="uid://ltylxy1ap307" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0039.png" id="11_4savy"]
+[ext_resource type="Texture2D" uid="uid://cl6saxm5emk8p" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0000.png" id="12_3t1yu"]
 [ext_resource type="Texture2D" uid="uid://dmj2ujbbrjflr" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0001.png" id="12_x2pwe"]
 [ext_resource type="Texture2D" uid="uid://b68831vemh6us" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0002.png" id="13_3vgd3"]
+[ext_resource type="Texture2D" uid="uid://bumpcqel0yqo8" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0006.png" id="13_f0hvh"]
 [ext_resource type="Texture2D" uid="uid://dorb6djagwegu" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0003.png" id="14_mpkk7"]
+[ext_resource type="Texture2D" uid="uid://ch1y0hjl0iuml" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0007.png" id="14_u78at"]
+[ext_resource type="Texture2D" uid="uid://b1c5ggdo5g713" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0008.png" id="15_2acto"]
 [ext_resource type="Texture2D" uid="uid://ckvktkdtej6d5" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0004.png" id="15_xdywu"]
+[ext_resource type="Texture2D" uid="uid://di54e3wmgm5f6" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0009.png" id="16_hmeq2"]
 [ext_resource type="Texture2D" uid="uid://bvsqokn1dwdhd" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0005.png" id="16_lpa4a"]
 [ext_resource type="Texture2D" uid="uid://css7aryfsppfq" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0006.png" id="17_33yqk"]
+[ext_resource type="Texture2D" uid="uid://dm7hy8hvgbr5e" path="res://Art/clownshoe2/clownshoe2/clownshoe2_0010.png" id="17_srpy7"]
 [ext_resource type="Texture2D" uid="uid://b2vl785c21acg" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0007.png" id="18_du6t7"]
 [ext_resource type="Texture2D" uid="uid://be3lo6n4d8atj" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0008.png" id="19_0yhq2"]
 [ext_resource type="Texture2D" uid="uid://cb450l4axc6fv" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0009.png" id="20_p4l0y"]
@@ -42,8 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://dga7ad23w4667" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0029.png" id="40_fjof7"]
 [ext_resource type="Texture2D" uid="uid://b14pmk8fff2we" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0030.png" id="41_on176"]
 [ext_resource type="AudioStream" uid="uid://bujvk1vb5jmkq" path="res://Sounds/Jump.mp3" id="42_dx3le"]
-[ext_resource type="AudioStream" uid="uid://bfpcbh4t1w6ca" path="res://Sounds/Tickle.mp3" id="43_lhh5v"]
-[ext_resource type="Texture2D" uid="uid://dim6sxxxrbh2u" path="res://Art/Arrows/Arrow.png" id="44_ttndk"]
+[ext_resource type="AudioStream" uid="uid://uxwpdutlpkf5" path="res://Sounds/Tickle.mp3" id="43_lhh5v"]
+[ext_resource type="Texture2D" uid="uid://c3bps5wswob76" path="res://Art/Arrows/Arrow.png" id="44_ttndk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5psfv"]
 size = Vector2(46, 32)
@@ -89,6 +95,60 @@ animations = [{
 "loop": false,
 "name": &"Land",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3t1yu")
+}],
+"loop": true,
+"name": &"PowerIdle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_q4ycv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3uqf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yyifi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cehbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iacvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_al8n3")
+}],
+"loop": false,
+"name": &"PowerLamd",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3t1yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xbm4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7gvuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6tv2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lb8kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_klxvd")
+}],
+"loop": false,
+"name": &"PowerSpring",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -204,8 +264,10 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"Spring"
+animation = &"Idle"
 autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("42_dx3le")
@@ -215,7 +277,6 @@ volume_db = -10.0
 stream = ExtResource("43_lhh5v")
 
 [node name="Arrow" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(7.62939e-06, 2.38419e-07)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("44_ttndk")
