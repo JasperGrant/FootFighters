@@ -102,11 +102,18 @@ public partial class GameManager : Node
 	public void PausedArena1()
 	{
 		_player1Reference.GetParent().SetPhysicsProcess(false);
+		_player1Reference.SetPhysicsProcess(false);
+		_player2Reference.SetPhysicsProcess(false);
 		var pause = GetNode("/root/BaseNode/Arena 1/UI/Pause Menu") as pause_menu;
 		pause.toggle_paused();
 
-		
+	}
 
+	public void UnpausedArena1()
+	{
+		_player1Reference.GetParent().SetPhysicsProcess(true);
+		_player1Reference.SetPhysicsProcess(true);
+		_player2Reference.SetPhysicsProcess(true);
 	}
 
 	public void LoopMusic()
