@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="2_kpnsr"]
 [ext_resource type="Texture2D" uid="uid://bfajkw7so5gn6" path="res://Art/Backgrounds/yellow.png" id="2_rx54s"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
-[ext_resource type="Texture2D" uid="uid://d0xffmivbuqpm" path="res://Art/BlueToenails.png" id="5_iv8su"]
-[ext_resource type="Theme" uid="uid://bia45wph86mr5" path="res://themes/play_button.tres" id="6_3peod"]
-[ext_resource type="Texture2D" uid="uid://bmknr6kn7ssdj" path="res://Art/RedToenails.png" id="6_nbanb"]
+[ext_resource type="Texture2D" uid="uid://c74wh2v2v0rne" path="res://Art/BlueToenails.png" id="5_iv8su"]
+[ext_resource type="Theme" uid="uid://efm0upm4fq4u" path="res://themes/play_button.tres" id="6_3peod"]
+[ext_resource type="Texture2D" uid="uid://85oepub211ib" path="res://Art/RedToenails.png" id="6_nbanb"]
 [ext_resource type="Script" path="res://Scripts/QuitButton.gd" id="8_l5hhx"]
 
 [node name="root" type="Node"]
