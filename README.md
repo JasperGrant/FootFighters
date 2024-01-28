@@ -13,6 +13,8 @@ Our unique hopping control scheme ensures hours of fun. Just point with the R St
 
 Featuring wacky powerups that change the whole game. Find them in shoeboxes scattered around the map.
 
+Two game controllers required to play.
+
 ![Alt text](READMEIMG/Foot.gif)
 
 
