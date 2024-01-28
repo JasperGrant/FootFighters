@@ -157,8 +157,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		var xdirection = Input.GetAxis(_inputMappings.Left, _inputMappings.Right);
 		var ydirection = Input.GetAxis(_inputMappings.Up, _inputMappings.Down);
 		float scale_needed_for_unit_mag = MathF.Sqrt(xdirection*xdirection+ydirection*ydirection);
-		xdirection = (scale_needed_for_unit_mag!=0) ? xdirection/scale_needed_for_unit_mag:xdirection;
-		ydirection = (scale_needed_for_unit_mag!=0) ? ydirection/scale_needed_for_unit_mag:ydirection;
+		xdirection = (scale_needed_for_unit_mag!=0) ? xdirection/scale_needed_for_unit_mag:0;
+		ydirection = (scale_needed_for_unit_mag!=0) ? ydirection/scale_needed_for_unit_mag:0;
 		_inputControlVector.X=xdirection;
 		_inputControlVector.Y=ydirection;
 
@@ -214,8 +214,9 @@ public partial class PlayerCharacter : CharacterBody2D
 			AddChild(_Feather);
 		
 			_featherRef=GetNode<Feather>(_Feather.GetPath());
-			
-			_featherRef.setVelo(_projectileVelo*_inputControlVector.X,_projectileVelo*_inputControlVector.Y);
+			//conditional prevents feathers from staying in player
+			//future add would be 1 or -1 depending on direction player is facing
+			_featherRef.setVelo((_inputControlVector.X!=0)? _projectileVelo*_inputControlVector.X:1,_projectileVelo*_inputControlVector.Y);
 
 			if(_isPlayer2)
 			{
@@ -246,13 +247,37 @@ public partial class PlayerCharacter : CharacterBody2D
 				}
 				else if (_inputControlVector.Y==0)
 				{
-					_localVelocity.X = _inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER;
-					_localVelocity.Y = 0; 
+					//allow a sort of dash in air
+					if (!IsOnFloor())
+					{
+						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER*3;
+						_localVelocity.Y = 0; 
+
+					}
+					else
+					{
+						_localVelocity.X = _inputControlVector.X * HOP_STRENGTH * ONLY_X_MOTION_SCALER;
+						_localVelocity.Y = 0; 
+					}
+
+
 				}
 				else
 				{
-				_localVelocity.X = _inputControlVector.X * HOP_STRENGTH;
-				_localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH;
+					//allow extra movement in air
+					if (!IsOnFloor())
+					{
+						_localVelocity.X = Velocity.X+_inputControlVector.X * HOP_STRENGTH;
+						//gravity will constantly pull current Y velocity down
+						//lowers the jump height possible if it is included
+						_localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH; 
+
+					}
+					else
+					{
+						_localVelocity.X = _inputControlVector.X * HOP_STRENGTH;
+						_localVelocity.Y = _inputControlVector.Y * HOP_STRENGTH;
+					}
 				}
 
 
