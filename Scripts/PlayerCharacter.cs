@@ -162,7 +162,11 @@ public partial class PlayerCharacter : CharacterBody2D
 		//populate available powerups
 		foreach(EPowerUps powerup in Enum.GetValues(typeof(EPowerUps)))
 		{
-			_powerUpOptions.Add(powerup);
+			if (powerup!=EPowerUps.None)
+			{
+				_powerUpOptions.Add(powerup);
+			}
+
 		}
 
 
@@ -353,7 +357,11 @@ public partial class PlayerCharacter : CharacterBody2D
 					//this line is jet mode (acceleration in X)
 					_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
 				}
-				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
+				else
+				{
+					_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
+				}
+
 
 			}
 		}
@@ -418,8 +426,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D.Position = _powerPosition;
 
 		_currentPowerState|=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
-
-
+		//_currentPowerState=EPowerUps.XAccel;
+		GD.Print($"New Power Up {_currentPowerState}");
 		_powerTimer.Start();
 	}
 	public void PowerDown()
