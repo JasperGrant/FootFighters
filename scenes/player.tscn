@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://be1sxce1ynfbr"]
+[gd_scene load_steps=47 format=3 uid="uid://be1sxce1ynfbr"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="1_ofsnx"]
 [ext_resource type="Texture2D" uid="uid://ba00obwrg1man" path="res://Art/Hoptest3/Hoptest3/Hoptest3_0000.png" id="2_vd1x8"]
@@ -101,60 +101,6 @@ animations = [{
 "loop": false,
 "name": &"Land",
 "speed": 30.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_hmfhk")
-}],
-"loop": true,
-"name": &"PowerIdle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_f0hvh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_u78at")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_2acto")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_hmeq2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_srpy7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_xvnk8")
-}],
-"loop": false,
-"name": &"PowerLand",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_hmfhk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_7nk18")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_m2v31")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_5b1r0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_n5slk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_1ahoh")
-}],
-"loop": false,
-"name": &"PowerSpring",
-"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -270,7 +216,7 @@ shape = SubResource("RectangleShape2D_5psfv")
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ok8ra")
-animation = &"PowerIdle"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]

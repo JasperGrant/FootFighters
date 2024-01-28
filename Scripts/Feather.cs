@@ -48,9 +48,9 @@ public partial class Feather : RigidBody2D
 		}
 		else{
 			var _Particle = ParticleScene.Instantiate() as GpuParticles2D;
-			_Particle.GlobalPosition = this.Position;
-			_Particle.RotationDegrees = 0;
-			GetParent().AddChild(_Particle);
+		_Particle.GlobalPosition = this.Position;
+		_Particle.RotationDegrees = this.RotationDegrees + 180;
+		GetParent().AddChild(_Particle);
 		}
 		_currentCollisions++;
 		if (_currentCollisions>=MaxCollisions)
