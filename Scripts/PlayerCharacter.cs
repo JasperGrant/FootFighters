@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Godot;
 
@@ -103,15 +104,28 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private Feather _featherRef;
 
+
+	private static Random _rnd = new Random();
+
+
 	//enum to identify power ups, set as flags to allow multiple to be active
-	[Flags]
-	public enum EPowerUps
+	[Flags] public enum EPowerUps
 	{
 		None = 0,
 		XAccel = 1<<0,
 		Ricochet = 1<<1
 
 	}
+
+	private List<EPowerUps> _powerUpOptions= new();
+
+	private EPowerUps _currentPowerState=EPowerUps.None;
+
+
+
+
+
+
 
 	public override void _Ready()
 	{
@@ -144,6 +158,15 @@ public partial class PlayerCharacter : CharacterBody2D
 			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P1_Health_Bar");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
+
+		//populate available powerups
+		foreach(EPowerUps powerup in Enum.GetValues(typeof(EPowerUps)))
+		{
+			_powerUpOptions.Add(powerup);
+		}
+
+
+
 	}
 
 	public override void _Process(double delta)
@@ -325,10 +348,13 @@ public partial class PlayerCharacter : CharacterBody2D
 			else
 			{
 				//allow some movement in air
-				
+				if((_currentPowerState & EPowerUps.XAccel)!=0)
+				{
+					//this line is jet mode (acceleration in X)
+					_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
+				}
 				_localVelocity.X = Mathf.MoveToward(Velocity.X, 0, 4*SPEED) +_inputControlVector.X * SPEED * 0.8F;
-				//this line is jet mode (acceleration in X)
-				//_localVelocity.X = Velocity.X+_inputControlVector.X * SPEED * 0.8F;
+
 			}
 		}
 
@@ -390,6 +416,10 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D.Play("PowerLand");
 		_sprite2D.Scale  = _powerScale;
 		_sprite2D.Position = _powerPosition;
+
+		_currentPowerState|=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
+
+
 		_powerTimer.Start();
 	}
 	public void PowerDown()
@@ -398,6 +428,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D.Play("Land");
 		_sprite2D.Scale = _nopowerScale;
 		_sprite2D.Position = _nopowerPosition;
+		_currentPowerState=EPowerUps.None;
 		_powerTimer.Stop();
 	}
 

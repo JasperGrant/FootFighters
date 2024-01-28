@@ -27,6 +27,8 @@ public partial class GameManager : Node
 	private AudioStreamPlayer _introMusic;
 	private AudioStreamPlayer _loopMusic;
 
+	public int WinnerNumber = 0;
+
 	private Timer _countdownTimer;
 
 	// Called when the node enters the scene tree for the first time.
