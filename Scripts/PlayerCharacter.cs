@@ -233,6 +233,7 @@ public partial class PlayerCharacter : CharacterBody2D
 			{
 				_sprite2D.Stop();
 				_sprite2D.Play("Spring");
+				_jumpsound.Play();
 				isInAir = true;
 
 				if (_inputControlVector.X==0)
