@@ -11,7 +11,7 @@ public partial class laugh : Node
 	private TextureRect _redFoot;
 	private TextureRect _blueFoot;
 
-	private Button _playAgrainButton;
+	private Button _playAgainButton;
 
 	public void gameOver(bool blueLost)
 	{
@@ -39,8 +39,8 @@ public partial class laugh : Node
 		_blueFoot = GetNode<TextureRect>("BlueToenails");
 		_redFoot = GetNode<TextureRect>("RedToenails");
 
-		_playAgrainButton = GetNode<Button>("FinishButton");
-		_playAgrainButton.GrabFocus();
+		_playAgainButton = GetNode<Button>("FinishButton");
+		_playAgainButton.GrabFocus();
 		GD.Print("Ready done");
 
 	}

@@ -1,7 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://deg34xi1lc36x"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_xa05p"]
-[ext_resource type="Texture2D" uid="uid://p4fylxi6l5y" path="res://Art/Backgrounds/yellow.png" id="2_rx54s"]
+[ext_resource type="Texture2D" uid="uid://bxab8lnrk7766" path="res://Logo.png" id="2_kpnsr"]
+[ext_resource type="Texture2D" uid="uid://doalhmefpg3ql" path="res://Art/Backgrounds/yellow.png" id="2_rx54s"]
 [ext_resource type="Script" path="res://scenes/play_button.gd" id="3_cukip"]
 [ext_resource type="Texture2D" uid="uid://bj48nki6eyq5d" path="res://Art/FootFighter-1-28-2024.png" id="5_cx6n1"]
 [ext_resource type="Texture2D" uid="uid://gr0d6ouu50yg" path="res://Art/BlueToenails.png" id="5_iv8su"]
