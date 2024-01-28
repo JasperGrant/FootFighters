@@ -82,6 +82,7 @@ frame_progress = 0.356969
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ol4vl")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]

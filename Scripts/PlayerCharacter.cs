@@ -78,6 +78,8 @@ public partial class PlayerCharacter : CharacterBody2D
 	private CollisionShape2D _collisionShape2D;
 
 	private AudioStreamPlayer _jumpsound;
+	private AudioStreamPlayer _ticklesound;
+
 
 	public Label _player_health_label;
 
@@ -102,6 +104,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
 		_jumpsound = GetNode<AudioStreamPlayer>("JumpSound");
+		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
 
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 
@@ -326,6 +329,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public void decrement_health(int diff){
 		_health -= diff;
+		_ticklesound.Play();
 	}
 
 
