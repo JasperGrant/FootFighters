@@ -59,7 +59,6 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	bool isInAir;
 
-
 	private bool _isPlayer2 = false;
 	private string _nodePath = "";
 
@@ -75,6 +74,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private PlayerMappings _inputMappings = new();
 	private AnimatedSprite2D _sprite2D;
+	private Sprite2D _arrow;
 	private CollisionShape2D _collisionShape2D;
 
 	private AudioStreamPlayer _jumpsound;
@@ -102,6 +102,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Initialization here.
 		
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
+		_arrow = GetNode<Sprite2D>("Arrow");
 		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
 		_jumpsound = GetNode<AudioStreamPlayer>("JumpSound");
 		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
@@ -115,9 +116,11 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		if (_isPlayer2)
 		{
+			_arrow.Modulate = new Color(0,0,255);
 			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P2_Health_Bar");
 		}
 		else{
+			_arrow.Modulate = new Color(255,0,0);
 			_player_health_label = GetNode<ProgressBar>("../UI/Health_Bars/P1_Health_Bar");
 		}
 		_inputMappings=new PlayerMappings(_isPlayer2);
@@ -162,6 +165,18 @@ public partial class PlayerCharacter : CharacterBody2D
 		ydirection = (scale_needed_for_unit_mag!=0) ? ydirection/scale_needed_for_unit_mag:0;
 		_inputControlVector.X=xdirection;
 		_inputControlVector.Y=ydirection;
+
+		if(_inputControlVector.X == 0 && _inputControlVector.Y == 0)
+		{
+			_arrow.Visible = false;
+		}
+		else
+		{
+			_arrow.Visible = true;
+			_arrow.Rotation = _inputControlVector.Angle();
+
+		}
+		_arrow.Rotation = _inputControlVector.Angle();
 
 		/*
 		// Get the input direction and handle the movement/deceleration.
@@ -208,8 +223,8 @@ public partial class PlayerCharacter : CharacterBody2D
 
 		*/
 
-		//Fire a feather
-		if (Input.IsActionJustPressed(_inputMappings.Special1))
+
+		if (Input.IsActionJustPressed(_inputMappings.Special1) && !(_inputControlVector.X == 0 && _inputControlVector.Y == 0))
 		{
 			var _Feather = FeatherScene.Instantiate();
 			AddChild(_Feather);
