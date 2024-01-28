@@ -329,6 +329,11 @@ public partial class PlayerCharacter : CharacterBody2D
 		_ticklesound.Play();
 	}
 
+	public void giveShoe()
+	{
+		GD.Print("Shoe given");
+	}
+
 
 
 
