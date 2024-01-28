@@ -26,17 +26,18 @@ collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_7gxsb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_iwiyt")
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_7ypy4")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="OnCollision"]
+[connection signal="timeout" from="Timer" to="." method="TimeOut"]
