@@ -82,7 +82,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	
 	private Vector2 _powerScale = new((float)0.13,(float)0.13);
 	private Vector2 _nopowerScale = new((float)0.2,(float)0.2);
-	private Vector2 _powerPosition = new(5,-7);
+	private Vector2 _powerPosition = new(3,-7);
 	private Vector2 _nopowerPosition = new(0,0);
 
 	private Vector2 _baseCollisionScale;
@@ -474,8 +474,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		if((_currentPowerState&EPowerUps.Shrink)!=0)
 		{
 			_sprite2D.Scale  = new Vector2(_powerScale.X/_shrinkByFactor, _powerScale.Y/_shrinkByFactor);
-			_sprite2D.Position = _powerPosition;
 			_collision.Scale = new Vector2(_baseCollisionScale.X/_shrinkByFactor, _baseCollisionScale.Y/_shrinkByFactor);
+			_collision.Position = _collision.Position + new Vector2(6,-6);
 		}
 		else
 		{

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class PowerIcon : AnimatedSprite2D
 {
@@ -20,5 +21,13 @@ public partial class PowerIcon : AnimatedSprite2D
 	public void powerSignal(String power)
 	{
 		Play(power);
+		if(power == "Shrink")
+		{
+			Scale = new Godot.Vector2(0.3F,0.3F);
+		}
+		else
+		{
+			Scale = new Godot.Vector2(0.1F,0.1F);
+		}
 	}
 }
