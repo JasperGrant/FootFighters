@@ -47,6 +47,8 @@ public readonly struct PlayerMappings
 
 public partial class PlayerCharacter : CharacterBody2D
 {
+	[Signal]
+	public delegate void powerSignalEventHandler(String power);
 	//constants
 	[Export] 
 	private const float SPEED=300.0F;
@@ -130,7 +132,6 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public override void _Ready()
 	{
-		
 		// Called every time the node is added to the scene.
 		// Initialization here.
 		
@@ -443,9 +444,12 @@ public partial class PlayerCharacter : CharacterBody2D
 		//_currentPowerState=EPowerUps.XAccel;
 		GD.Print($"New Power Up {_currentPowerState}");
 		_powerTimer.Start();
+		EmitSignal(SignalName.powerSignal,$"{_currentPowerState}");
 	}
 	public void PowerDown()
 	{
+		EmitSignal(SignalName.powerSignal,"Nothing");
+
 		hasPower = false;
 		_sprite2D.Play("Land");
 		_sprite2D.Scale = _nopowerScale;

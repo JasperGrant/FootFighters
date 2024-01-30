@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://s0sh17lvostp"]
+
+[ext_resource type="Texture2D" uid="uid://cp4mney4wqq3r" path="res://Art/HD_transparent_picture.png" id="1_2sr1t"]
+[ext_resource type="Texture2D" uid="uid://b47fgm5a8kowb" path="res://Art/hermispowerup.png" id="1_8jm3e"]
+[ext_resource type="Texture2D" uid="uid://dj77jyrjgkhh7" path="res://Art/springpowerup.png" id="1_aqr82"]
+[ext_resource type="Texture2D" uid="uid://cnem1qsbpl1ui" path="res://Art/ricochetpowerup.png" id="3_d4kd0"]
+[ext_resource type="Script" path="res://scenes/PowerIcon.cs" id="5_1bx3f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy0cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8jm3e")
+}],
+"loop": true,
+"name": &"InfJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2sr1t")
+}],
+"loop": true,
+"name": &"Nothing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d4kd0")
+}],
+"loop": true,
+"name": &"Ricochet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aqr82")
+}],
+"loop": true,
+"name": &"XAccel",
+"speed": 5.0
+}]
+
+[node name="Sprite" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_vy0cd")
+animation = &"InfJump"
+autoplay = "Nothing"
+script = ExtResource("5_1bx3f")
