@@ -1,3 +1,8 @@
+
+#define DO_IFRAME
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -92,6 +97,7 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private Timer _powerTimer;
 	private Timer _iFrameTimer;
+	private bool _inIFrame=false;
 
 	public ProgressBar _player_health_label;
 
@@ -429,8 +435,16 @@ public partial class PlayerCharacter : CharacterBody2D
 	}
 
 	public void decrement_health(int diff){
-		_health -= diff;
-		_ticklesound.Play();
+		if(!_inIFrame)
+		{
+			_health -= diff;
+			_ticklesound.Play();
+		
+			#if DO_IFRAME
+				_inIFrame=true;
+				_iFrameTimer.Start();
+			#endif
+		}
 	}
 
 	public void PowerUp()
@@ -459,7 +473,10 @@ public partial class PlayerCharacter : CharacterBody2D
 	}
 
 
-
+	public void OnIFrameTimerTimeout()
+	{
+		_inIFrame=false;
+	}
 
 
 

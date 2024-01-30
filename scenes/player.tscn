@@ -284,6 +284,8 @@ wait_time = 10.0
 one_shot = true
 
 [node name="IFrameTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -291,3 +293,4 @@ sprite_frames = SubResource("SpriteFrames_fxl0x")
 animation = &"Spring"
 
 [connection signal="timeout" from="PowerTimer" to="." method="PowerDown"]
+[connection signal="timeout" from="IFrameTimer" to="." method="OnIFrameTimerTimeout"]
