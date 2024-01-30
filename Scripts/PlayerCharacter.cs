@@ -85,12 +85,14 @@ public partial class PlayerCharacter : CharacterBody2D
 	private Vector2 _powerPosition = new(5,-7);
 	private Vector2 _nopowerPosition = new(0,0);
 
-	private float _baseScale =0.2F;
+	private Vector2 _baseCollisionScale;
+	private Vector2 _baseCollisionPosition;
+	private float _shrinkByFactor =2F;
 
 	private PlayerMappings _inputMappings = new();
 	private AnimatedSprite2D _sprite2D;
 	private Sprite2D _arrow;
-	private CollisionShape2D _collisionShape2D;
+	private CollisionShape2D _collision;
 
 	private AudioStreamPlayer _jumpsound;
 	private AudioStreamPlayer _ticklesound;
@@ -117,12 +119,14 @@ public partial class PlayerCharacter : CharacterBody2D
 
 
 	//enum to identify power ups, set as flags to allow multiple to be active
+	//Add new powerups here, they will be added to the options list automatically
 	[Flags] public enum EPowerUps
 	{
 		None = 0,
 		XAccel = 1<<0,
 		Ricochet = 1<<1,
-		InfJump =1<<2
+		InfJump = 1<<2,
+		Shrink = 1<<3
 
 	}
 
@@ -141,15 +145,24 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Called every time the node is added to the scene.
 		// Initialization here.
 		
+		//get references to useful nodes
 		_sprite2D = GetNode<AnimatedSprite2D>("Sprite");
 		_arrow = GetNode<Sprite2D>("Arrow");
-		_collisionShape2D = GetNode<CollisionShape2D>("Collision");
+		_collision = GetNode<CollisionShape2D>("Collision");
 		_jumpsound = GetNode<AudioStreamPlayer>("JumpSound");
 		_ticklesound = GetNode<AudioStreamPlayer>("TickleSound");
 
 		_nodePath=GetNode<PlayerCharacter>(".").GetPath().ToString();
 		_powerTimer = GetNode<Timer>("PowerTimer");
 		_iFrameTimer = GetNode<Timer>("IFrameTimer");
+
+
+		//populate useful values
+		_baseCollisionPosition=_collision.Position;
+		_baseCollisionScale=_collision.Scale;
+
+
+
 
 		if(_nodePath.IndexOf("Player2")!=-1)
 		{
@@ -450,13 +463,26 @@ public partial class PlayerCharacter : CharacterBody2D
 	public void PowerUp()
 	{
 		hasPower = true;
-		_sprite2D.Play("PowerLand");
-		_sprite2D.Scale  = _powerScale;
-		_sprite2D.Position = _powerPosition;
+
 
 		_currentPowerState=_powerUpOptions[_rnd.Next(_powerUpOptions.Count)];
-		//_currentPowerState=EPowerUps.XAccel;
+		//_currentPowerState=EPowerUps.Shrink;
 		GD.Print($"New Power Up {_currentPowerState}");
+
+		_sprite2D.Play("PowerLand");
+
+		if((_currentPowerState&EPowerUps.Shrink)!=0)
+		{
+			_sprite2D.Scale  = new Vector2(_powerScale.X/_shrinkByFactor, _powerScale.Y/_shrinkByFactor);
+			_sprite2D.Position = _powerPosition;
+			_collision.Scale = new Vector2(_baseCollisionScale.X/_shrinkByFactor, _baseCollisionScale.Y/_shrinkByFactor);
+		}
+		else
+		{
+			_sprite2D.Scale  = _powerScale;
+			_sprite2D.Position = _powerPosition;
+		}
+
 		_powerTimer.Start();
 		EmitSignal(SignalName.powerSignal,$"{_currentPowerState}");
 	}
@@ -468,6 +494,8 @@ public partial class PlayerCharacter : CharacterBody2D
 		_sprite2D.Play("Land");
 		_sprite2D.Scale = _nopowerScale;
 		_sprite2D.Position = _nopowerPosition;
+		_collision.Scale = _baseCollisionScale;
+		_collision.Position = _baseCollisionPosition;
 		_currentPowerState=EPowerUps.None;
 		_powerTimer.Stop();
 	}
