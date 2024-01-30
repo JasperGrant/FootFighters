@@ -714,6 +714,10 @@ grow_vertical = 2
 texture = ExtResource("6_tpg8f")
 expand_mode = 1
 
+[node name="P1_power" parent="UI/Health_Bars/Laughing_Face_1" instance=ExtResource("9_fbccr")]
+position = Vector2(502, 43)
+animation = &"XAccel"
+
 [node name="Laughing_Face_2" type="TextureRect" parent="UI/Health_Bars"]
 layout_mode = 1
 anchors_preset = 6
@@ -729,6 +733,10 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_tpg8f")
 expand_mode = 1
+
+[node name="P2_power" parent="UI/Health_Bars/Laughing_Face_2" instance=ExtResource("9_fbccr")]
+position = Vector2(-391, 38)
+animation = &"XAccel"
 
 [node name="Clown" type="TextureRect" parent="UI"]
 anchors_preset = 5
@@ -753,13 +761,6 @@ sprite_frames = SubResource("SpriteFrames_2cfyb")
 autoplay = "default"
 frame = 4
 frame_progress = 1.0
-
-[node name="P1_power" parent="UI" instance=ExtResource("9_fbccr")]
-position = Vector2(500, 44)
-
-[node name="P2_power" parent="UI" instance=ExtResource("9_fbccr")]
-position = Vector2(1415, 44)
-scale = Vector2(0.1, 0.1)
 
 [node name="MultiCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -816,5 +817,5 @@ position = Vector2(1896, 1039)
 [node name="shoebox5" parent="." instance=ExtResource("10_mwfjn")]
 position = Vector2(1080, 152)
 
-[connection signal="powerSignal" from="Player1" to="UI/P1_power" method="powerSignal"]
-[connection signal="powerSignal" from="Player2" to="UI/P2_power" method="powerSignal"]
+[connection signal="powerSignal" from="Player1" to="UI/Health_Bars/Laughing_Face_1/P1_power" method="powerSignal"]
+[connection signal="powerSignal" from="Player2" to="UI/Health_Bars/Laughing_Face_2/P2_power" method="powerSignal"]

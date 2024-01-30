@@ -199,6 +199,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_2udk7")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Text"]
+position = Vector2(602, 62)
+sprite_frames = SubResource("SpriteFrames_53380")
+autoplay = "default"
+frame = 37
+frame_progress = 1.0
+
 [node name="FinishButton" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,12 +267,5 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 texture = ExtResource("8_k38jy")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1171, 352)
-sprite_frames = SubResource("SpriteFrames_53380")
-autoplay = "default"
-frame = 37
-frame_progress = 1.0
 
 [connection signal="pressed" from="FinishButton" to="FinishButton" method="_on_pressed"]
