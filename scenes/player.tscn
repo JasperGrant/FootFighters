@@ -285,6 +285,7 @@ one_shot = true
 
 [node name="IFrameTimer" type="Timer" parent="."]
 process_callback = 0
+wait_time = 0.5
 one_shot = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
