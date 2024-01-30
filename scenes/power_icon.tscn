@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b47fgm5a8kowb" path="res://Art/hermispowerup.png" id="1_8jm3e"]
 [ext_resource type="Texture2D" uid="uid://dj77jyrjgkhh7" path="res://Art/springpowerup.png" id="1_aqr82"]
 [ext_resource type="Texture2D" uid="uid://cnem1qsbpl1ui" path="res://Art/ricochetpowerup.png" id="3_d4kd0"]
-[ext_resource type="Script" path="res://scenes/PowerIcon.cs" id="5_1bx3f"]
+[ext_resource type="Script" path="res://Scripts/PowerIcon.cs" id="5_auucv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vy0cd"]
 animations = [{
@@ -46,4 +46,4 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vy0cd")
 animation = &"InfJump"
 autoplay = "Nothing"
-script = ExtResource("5_1bx3f")
+script = ExtResource("5_auucv")
